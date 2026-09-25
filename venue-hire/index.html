@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f5f0e8" />
+  <meta name="description" content="Plan a birthday, high tea or private gathering at Wild and The Sun in Aberfoyle Park." />
+  <title>Venue Hire | Wild and The Sun Açaí Cafe</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&amp;display=swap" rel="stylesheet" />
+  <link rel="preload" href="/assets/client/berry-choc.jpg" as="image" fetchpriority="high" />
+  <link rel="stylesheet" href="/design.css" />
+  <script src="/site.js" defer></script>
+  <script src="/venue-planner.js" defer></script>
+</head>
+<body class="page-venue">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="topline"><span>Wild and The Sun Açaí Cafe</span><span>Aberfoyle Park, South Australia</span></div>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Wild and The Sun home"><span class="brand-sun" aria-hidden="true"></span><span class="brand-type">wild <i>&amp;</i> the sun<small>AÇAÍ CAFE</small></span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button>
+    <nav class="primary-nav" id="primary-nav" aria-label="Main navigation"><a href="/">Home</a><a href="/menu/">Menu</a><a href="/venue-hire/" aria-current="page">Venue hire</a><a href="/story/">Our story</a><a href="/visit/">Visit</a><a href="/book/">Book a table</a><a class="mobile-order-link" href="https://wild-and-the-sun.square.site/s/order#most-popular" target="_blank" rel="noopener noreferrer">Order online</a></nav>
+    <a class="header-order" href="https://wild-and-the-sun.square.site/s/order#most-popular" target="_blank" rel="noopener noreferrer">Order online<span class="link-arrow" aria-hidden="true"></span></a>
+  </header>
+  <div class="reading-progress" aria-hidden="true"></div>
+  <main id="main">
+    <section class="inner-hero venue-hero" id="top" aria-labelledby="venue-title">
+      <div class="inner-hero-copy" data-reveal><span class="eyebrow">CELEBRATE HERE / 05</span><h1 id="venue-title">Make it a little<br /><em>more special.</em></h1><p>Birthdays, high tea and private gatherings, planned with the café team in our warm Aberfoyle Park space.</p><a class="button button-dark" href="#party-planner">Plan your table<span class="link-arrow" aria-hidden="true"></span></a></div>
+      <div class="inner-hero-media"><img src="/assets/client/berry-choc.jpg" alt="Berry smoothie topped with chocolate soft serve" width="1122" height="1402" fetchpriority="high" /><span class="media-index">YOUR DAY / YOUR TABLE</span></div>
+    </section>
+
+    <section class="venue-occasions layout-wrap" aria-label="Venue hire occasions">
+      <article data-reveal><span>01</span><h2>Birthday tables</h2><p>A cheerful café setting for cake, savouries, specialty drinks and time together.</p></article>
+      <article data-reveal><span>02</span><h2>High tea afternoons</h2><p>Tea, coffee and tiered plates filled with sweet and savoury café favourites.</p></article>
+      <article data-reveal><span>03</span><h2>Private gatherings</h2><p>A warm emerald-and-pink space for family milestones and intimate celebrations.</p></article>
+    </section>
+
+    <section class="venue-expect layout-wrap" aria-labelledby="venue-expect-title">
+      <div><span class="eyebrow">WHAT TO EXPECT</span><h2 id="venue-expect-title">Planned with<br /><em>the café team.</em></h2></div>
+      <div class="venue-expect-list">
+        <article><h3>Menu planning</h3><p>Choose from savouries, pâtisserie, specialty drinks, smoothies and colourful bowls. Tell us about dietary requirements in your enquiry.</p></article>
+        <article><h3>Personal details</h3><p>Share your occasion, guest estimate and any styling or cake ideas. The team will confirm what is possible for your date.</p></article>
+        <article><h3>Availability and quote</h3><p>Capacity, timing, minimum spend and inclusions are confirmed personally, so your quote matches your celebration.</p></article>
+      </div>
+    </section>
+
+    <section class="party-planner layout-wrap" id="party-planner" aria-labelledby="planner-title">
+      <div class="party-planner-intro"><span class="eyebrow">PARTY PLANNER</span><h2 id="planner-title">Plan your table.</h2><p>Choose an occasion, guest count and menu ideas. We will turn your choices into a WhatsApp enquiry for the café.</p></div>
+      <div class="party-planner-stage">
+        <div class="party-planner-picture" data-party-picture>
+          <img class="party-planner-scene" src="/assets/graphic/venue-table-sketch-v2.webp" alt="Hand-drawn overhead high tea table" data-party-scene />
+          <div class="party-planner-ticket" aria-live="polite"><span data-ticket-party>High tea</span><strong><b data-ticket-guests>10</b> guests</strong><small data-ticket-date>Choose a date</small></div>
+          <div class="party-planner-seats" data-party-seats aria-hidden="true"></div>
+        </div>
+        <form class="party-planner-controls" onsubmit="return false">
+          <fieldset><legend>Pick the occasion</legend><div class="party-choice-grid">
+            <button type="button" class="is-active" data-party="high-tea" data-image="/assets/graphic/venue-table-sketch-v2.webp" data-label="High tea" aria-pressed="true"><strong>High tea</strong><span>Tea, savouries and little sweets</span></button>
+            <button type="button" data-party="birthday" data-image="/assets/graphic/venue-birthday-sketch-v2.webp" data-label="Birthday" aria-pressed="false"><strong>Birthday</strong><span>Cake, drinks and a celebratory table</span></button>
+            <button type="button" data-party="gathering" data-image="/assets/graphic/venue-gathering-sketch-v2.webp" data-label="Gathering" aria-pressed="false"><strong>Gathering</strong><span>A relaxed menu made for sharing</span></button>
+          </div></fieldset>
+          <fieldset><legend>Set your table</legend><label class="guest-slider"><span>Guests <strong data-guest-output>10</strong></span><input type="range" min="4" max="30" step="1" value="10" data-guests /></label><label class="planner-date">Preferred date<input type="date" data-date /></label></fieldset>
+          <fieldset><legend>Add menu ideas</legend><div class="touch-grid">
+            <button type="button" class="is-active" data-touch="Gourmet sandos" aria-pressed="true">Gourmet sandos</button><button type="button" data-touch="Mini croissants" aria-pressed="false">Mini croissants</button><button type="button" class="is-active" data-touch="Flower baklava" aria-pressed="true">Flower baklava</button><button type="button" data-touch="Lychee strawberry" aria-pressed="false">Lychee strawberry</button><button type="button" data-touch="Pistachio lattes" aria-pressed="false">Pistachio lattes</button><button type="button" data-touch="Colourful bowls" aria-pressed="false">Colourful bowls</button>
+          </div></fieldset>
+          <a class="button button-dark party-planner-send" href="#" target="_blank" rel="noopener noreferrer" data-planner-send>Send this idea to the café<span class="link-arrow" aria-hidden="true"></span></a>
+          <p class="party-planner-note">This starts an enquiry in WhatsApp. The team will confirm availability, capacity, pricing and final menu details.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><div class="footer-main layout-wrap"><div class="footer-lead"><span class="eyebrow">YOUR SUNNY SPOT</span><a class="footer-wordmark" href="/">wild <i>&amp;</i> the sun</a><p>Açaí, coffee and a little time for yourself in Aberfoyle Park.</p></div><div class="footer-column"><h2>Explore</h2><a href="/menu/">Menu</a><a href="/venue-hire/">Venue hire</a><a href="/story/">Our story</a><a href="/book/">Book a table</a><a href="/visit/">Visit us</a></div><div class="footer-column"><h2>Find us</h2><p>Shop 4, Aberfoyle Hub<br />130-150 Hub Drive<br />Aberfoyle Park SA 5159</p><a href="tel:+61451661351">0451 661 351</a><a href="https://www.instagram.com/wild_and_the_sun_acai_cafe/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Wild+and+the+Sun+Acai+Cafe%2C+Shop+4%2C+130-150+Hub+Drive%2C+Aberfoyle+Park+SA+5159" target="_blank" rel="noopener noreferrer">Get directions</a></div></div><div class="footer-bottom layout-wrap"><span>© <span id="year"></span> Wild and The Sun Açaí Cafe</span><span>Family-run in Aberfoyle Park.</span></div></footer>
+  <div class="mobile-dock" id="mobile-dock" aria-label="Quick actions"><a href="#party-planner">Plan a party</a><a href="https://wild-and-the-sun.square.site/s/order#most-popular" target="_blank" rel="noopener noreferrer">Order online</a></div>
+</body>
+</html>
