@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#163307" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="description" content="{{DESCRIPTION}}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_AU" />
+    <meta property="og:title" content="{{TITLE}}" />
+    <meta property="og:description" content="{{DESCRIPTION}}" />
+    <meta property="og:image" content="{{OG_IMAGE}}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>{{TITLE}}</title>
+    {{CANONICAL}}
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&amp;display=swap"
+      rel="stylesheet"
+    />
+    {{PRELOAD}}
+    <link rel="stylesheet" href="/design.css?v=20260927-rebuild1" />
+    <script src="/config.js" defer></script>
+    <script src="/business-settings.js" defer></script>
+    <script src="/site.js" defer></script>
+    {{PAGE_SCRIPTS}}
+  </head>
+  <body class="page-{{PAGE}}">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Wild and The Sun home"
+        ><img
+          src="/assets/brand/official-logo-banner.jpg"
+          alt="Wild and The Sun Açaí Cafe"
+          width="1200"
+          height="327"
+      /></a>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+        aria-label="Open menu"
+      >
+        <span></span><span></span>
+      </button>
+      <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+        {{NAV}}
+      </nav>
+      <a
+        class="header-order"
+        href="{{SQUARE_URL}}"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Order online <span class="button-arrow" aria-hidden="true"></span
+      ></a>
+    </header>
+    <main id="main">{{BODY}}</main>
+    {{FOOTER}}
+    <div class="mobile-dock" id="mobile-dock" aria-label="Quick actions">
+      <a href="/book/">Book a table</a
+      ><a href="{{SQUARE_URL}}" target="_blank" rel="noopener noreferrer"
+        >Order online</a
+      >
+    </div>
+  </body>
+</html>

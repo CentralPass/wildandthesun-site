@@ -1,67 +1,274 @@
 <!doctype html>
 <html lang="en-AU">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#f5f0e8" />
-  <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <meta name="description" content="Bright açaí bowls, coffee, smoothies and something sweet at Wild and The Sun Açaí Cafe in Aberfoyle Park. Explore the menu, book a table or order online." />
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="en_AU" />
-  <meta property="og:title" content="Wild and The Sun Açaí Cafe | Aberfoyle Park" />
-  <meta property="og:description" content="Bright açaí bowls, coffee, smoothies and something sweet at Wild and The Sun Açaí Cafe in Aberfoyle Park. Explore the menu, book a table or order online." />
-  <meta name="twitter:card" content="summary" />
-  <title>Wild and The Sun Açaí Cafe | Aberfoyle Park</title>
-  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&amp;display=swap" rel="stylesheet" />
-  <link rel="preload" href="/assets/client/acai-trio.jpg" as="image" fetchpriority="high" />
-  <link rel="stylesheet" href="/design.css?v=20260927-mobile3" />
-  <script src="/site.js" defer></script>
-</head>
-<body class="page-home">
-  <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <a class="brand" href="/" aria-label="Wild and The Sun home"><img class="brand-logo" src="/assets/brand/official-logo-banner.jpg" alt="Wild and The Sun Açaí Cafe" width="4096" height="1118" /></a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span></span><span></span></button>
-    <nav class="primary-nav" id="primary-nav" aria-label="Main navigation"><a href="/" aria-current="page">Home</a><a href="/menu/">Menu</a><a href="/venue-hire/">Venue hire</a><a href="/story/">Our story</a><a href="/visit/">Visit</a><a href="/book/">Book a table</a><a class="mobile-order-link" href="https://wild-and-the-sun.square.site/s/order#most-popular" target="_blank" rel="noopener noreferrer">Order online</a></nav>
-    <a class="header-order" href="https://wild-and-the-sun.square.site/s/order#most-popular" target="_blank" rel="noopener noreferrer">Order online<span class="link-arrow" aria-hidden="true"></span></a>
-  </header>
-  <div class="reading-progress" aria-hidden="true"></div>
-  <main id="main">
-  <section class="home-hero" id="top" aria-labelledby="home-title">
-    <div class="hero-copy" data-reveal>
-      <span class="eyebrow"><span class="eyebrow-line"></span> ABERFOYLE PARK, SA</span>
-      <h1 id="home-title">A little <br /><em>wild.</em> A lot <br />of <span class="underline-word">sunshine.</span></h1>
-      <p>Colourful açaí, really good drinks and a warm welcome. Find your favourite part of the day right here at the Hub.</p>
-      <div class="button-row"><a class="button button-dark" href="https://wild-and-the-sun.square.site/s/order#most-popular" target="_blank" rel="noopener noreferrer">Order online<span class="link-arrow" aria-hidden="true"></span></a><a class="button button-text" href="/book/">Book a table<span class="link-arrow" aria-hidden="true"></span></a></div>
-      <div class="hero-bottom-note"><span>01 / AÇAÍ CAFE</span><span>OPEN TUESDAY TO SUNDAY</span></div>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#163307" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="description" content="Açaí bowls, specialty drinks and a warm welcome at Wild and The Sun in Aberfoyle Park. Find us, view the café menu or order online." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_AU" />
+    <meta property="og:title" content="Wild and The Sun Açaí Cafe | Aberfoyle Park" />
+    <meta property="og:description" content="Açaí bowls, specialty drinks and a warm welcome at Wild and The Sun in Aberfoyle Park. Find us, view the café menu or order online." />
+    <meta property="og:image" content="https://wild-and-the-sun-preview.pages.dev/assets/client/acai-trio.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Wild and The Sun Açaí Cafe | Aberfoyle Park</title>
+
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preload" href="/assets/client/acai-trio.jpg" as="image" fetchpriority="high" />
+    <link rel="stylesheet" href="/design.css?v=20260927-rebuild1" />
+    <script src="/config.js" defer></script>
+    <script src="/business-settings.js" defer></script>
+    <script src="/site.js" defer></script>
+
+  </head>
+  <body class="page-home">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="Wild and The Sun home"
+        ><img
+          src="/assets/brand/official-logo-banner.jpg"
+          alt="Wild and The Sun Açaí Cafe"
+          width="1200"
+          height="327"
+      /></a>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+        aria-label="Open menu"
+      >
+        <span></span><span></span>
+      </button>
+      <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
+        <a href="/" data-nav="home" aria-current="page">Home</a>
+<a href="/menu/" data-nav="menu">Menu</a>
+<a href="/venue-hire/" data-nav="venue">Gather here</a>
+<a href="/story/" data-nav="story">Our story</a>
+<a href="/visit/" data-nav="visit">Visit</a>
+<a href="/book/" data-nav="book">Book a table</a>
+<a
+  class="mobile-order-link"
+  href="https://wild-and-the-sun.square.site/s/order#most-popular"
+  target="_blank"
+  rel="noopener noreferrer"
+  >Order online</a
+>
+
+      </nav>
+      <a
+        class="header-order"
+        href="https://wild-and-the-sun.square.site/s/order#most-popular"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Order online <span class="button-arrow" aria-hidden="true"></span
+      ></a>
+    </header>
+    <main id="main"><section class="home-hero" id="top" aria-labelledby="home-title">
+  <div class="home-hero-media">
+    <img
+      src="/assets/client/acai-trio.jpg"
+      alt="Three Wild and The Sun açaí cups topped with fruit and sauces"
+      width="1122"
+      height="1402"
+      fetchpriority="high"
+    /><span class="hero-photo-tag">A good day starts here</span>
+  </div>
+  <div class="home-hero-copy">
+    <p class="kicker">WILD AND THE SUN / ABERFOYLE PARK</p>
+    <h1 id="home-title">A little wild.<br /><em>A lot of sunshine.</em></h1>
+    <p class="hero-lede">
+      Colourful açaí, specialty drinks and a place to slow down. Come as you are
+      and stay for the good part of the day.
+    </p>
+    <div class="hero-actions">
+      <a
+        class="button button-pink"
+        href="https://wild-and-the-sun.square.site/s/order#most-popular"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Order online <span class="button-arrow" aria-hidden="true"></span></a
+      ><a class="button button-outline" href="/menu/"
+        >View the menu <span class="button-arrow" aria-hidden="true"></span
+      ></a>
     </div>
-    <div class="hero-visual">
-      <div class="hero-image-stage">
-        <img class="hero-shot hero-shot-main" src="/assets/client/acai-trio.jpg" alt="Three Wild and The Sun açaí cups with fruit and sauces" width="1122" height="1402" fetchpriority="high" />
-      </div>
-      <div class="hero-orbit" aria-hidden="true"><svg viewBox="0 0 160 160"><defs><path id="orbit-path" d="M80,80 m-60,0 a60,60 0 1,1 120,0 a60,60 0 1,1 -120,0" /></defs><text><textPath href="#orbit-path">GOOD FOOD  /  GOOD DAYS  /  GOOD FOOD  /  GOOD DAYS  /  </textPath></text></svg><span class="orbit-core"></span></div>
-      <span class="photo-corner">A BRIGHTER KIND OF BREAK</span>
+    <a class="quiet-link" href="/book/">Looking for a table? Call to book.</a>
+  </div>
+</section>
+<section class="flavour-strip" aria-label="What we serve">
+  <div class="flavour-window">
+    <div class="flavour-track">
+      <span>AÇAÍ BOWLS / COFFEE / SMOOTHIES / SOMETHING SWEET / </span
+      ><span aria-hidden="true"
+        >AÇAÍ BOWLS / COFFEE / SMOOTHIES / SOMETHING SWEET /
+      </span>
     </div>
-  </section>
-  <section class="reviews-banner" aria-label="Customer reviews"><div class="reviews-window"><div class="reviews-track"><div class="reviews-group"><blockquote>“Croissant and coffee were very tasty”</blockquote><blockquote>“Absolutely delicious!”</blockquote></div><div class="reviews-group" aria-hidden="true"><blockquote>“Croissant and coffee were very tasty”</blockquote><blockquote>“Absolutely delicious!”</blockquote></div></div></div></section>
-  <section class="home-intro layout-wrap" aria-labelledby="intro-title"><div class="section-number">01 / COME ON IN</div><div data-reveal><h2 id="intro-title">For the quick stop.<br /><em>For the long catch up.</em></h2><p>Whether you are here for a cold açaí bowl, a coffee with a friend or a little treat, there is always a good reason to stay a while.</p></div></section>
-  <section class="editorial-grid layout-wrap" aria-label="Explore Wild and The Sun">
-    <a class="editorial-card card-tall" href="/menu/" data-reveal><div class="image-clip"><img src="/assets/client/gourmet-sando.jpg" alt="Toasted gourmet sandwich with greens, tomato and cheese" width="1122" height="1402" loading="lazy" /></div><div class="editorial-meta"><span>01 / THE MENU</span><h3>Lunch, sweets and colourful drinks.</h3><span class="card-link">Our menu<span class="link-arrow" aria-hidden="true"></span></span></div></a>
-    <a class="editorial-card card-offset" href="/story/" data-reveal><div class="image-clip"><img src="/assets/client/chocolate-acai-cups.jpg" alt="Chocolate açaí cups with berries" width="1122" height="1402" loading="lazy" /></div><div class="editorial-meta"><span>02 / OUR STORY</span><h3>A family café, built by hand.</h3><span class="card-link">Meet the family<span class="link-arrow" aria-hidden="true"></span></span></div></a>
-    <a class="editorial-card card-small" href="/venue-hire/" data-reveal><div class="image-clip"><img src="/assets/client/berry-choc.jpg" alt="Berry smoothie topped with chocolate soft serve" width="1122" height="1402" loading="lazy" /></div><div class="editorial-meta"><span>03 / CELEBRATE</span><h3>Make your gathering special.</h3><span class="card-link">Explore venue hire<span class="link-arrow" aria-hidden="true"></span></span></div></a>
-  </section>
-  <section class="home-booking-band" aria-labelledby="home-booking-title"><div class="layout-wrap home-booking-inner"><div><span class="eyebrow">MAKE A LITTLE TIME</span><h2 id="home-booking-title">Pull up a chair.<br /><em>Stay for a while.</em></h2></div><div><p>Planning a catch up? Give us a call to book your table. Online bookings will follow when the venue system is ready.</p><a class="button button-cream" href="/book/">Book a table<span class="link-arrow" aria-hidden="true"></span></a></div></div></section></main>
-  <footer class="site-footer">
-    <div class="footer-main layout-wrap">
-      <div class="footer-lead"><span class="eyebrow">YOUR SUNNY SPOT</span><a class="footer-logo" href="/" aria-label="Wild and The Sun home"><img src="/assets/brand/official-logo-banner.jpg" alt="Wild and The Sun Açaí Cafe" width="4096" height="1118" loading="lazy" /></a><p>Açaí, coffee and a little time for yourself in Aberfoyle Park.</p></div>
-      <div class="footer-column"><h2>Explore</h2><a href="/menu/">Menu</a><a href="/venue-hire/">Venue hire</a><a href="/story/">Our story</a><a href="/book/">Book a table</a><a href="/visit/">Visit us</a></div>
-      <div class="footer-column"><h2>Find us</h2><p>Shop 4, Aberfoyle Hub<br />130-150 Hub Drive<br />Aberfoyle Park SA 5159</p><a href="tel:+61451661351">0451 661 351</a><a href="https://www.instagram.com/wild_and_the_sun_acai_cafe/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.google.com/maps/dir/?api=1&destination=Wild+and+the+Sun+Acai+Cafe%2C+Shop+4%2C+130-150+Hub+Drive%2C+Aberfoyle+Park+SA+5159" target="_blank" rel="noopener noreferrer">Get directions</a></div>
+  </div>
+  <button
+    class="motion-toggle"
+    type="button"
+    aria-label="Pause moving text"
+    aria-pressed="false"
+    data-motion-toggle
+  >
+    Pause
+  </button>
+</section>
+<section class="home-signature layout-wrap" aria-labelledby="signature-title">
+  <div class="signature-media" data-reveal>
+    <img
+      src="/assets/client/berry-choc.jpg"
+      alt="Wild and The Sun berry drink finished with chocolate soft serve"
+      width="1122"
+      height="1402"
+      loading="lazy"
+    />
+  </div>
+  <div class="signature-copy" data-reveal>
+    <p class="kicker">THE GOOD STUFF</p>
+    <h2 id="signature-title">
+      A little treat can change <em>the whole day.</em>
+    </h2>
+    <p>
+      Bring a friend, grab a bowl, or find your new favourite drink. The menu is
+      made for quick stops and long catch-ups alike.
+    </p>
+    <a class="text-link" href="/menu/"
+      >See the café menu <span class="button-arrow" aria-hidden="true"></span
+    ></a>
+  </div>
+</section>
+<section class="home-explore layout-wrap" aria-labelledby="explore-title">
+  <div class="section-heading">
+    <p class="kicker">MAKE IT YOURS</p>
+    <h2 id="explore-title">Come for a bowl.<br /><em>Stay for a while.</em></h2>
+  </div>
+  <div class="explore-grid">
+    <a class="explore-card" href="/menu/" data-reveal
+      ><img
+        src="/assets/client/gourmet-sando.jpg"
+        alt="Toasted gourmet sandwich with greens and cheese"
+        width="1122"
+        height="1402"
+        loading="lazy"
+      />
+      <div>
+        <span>01 / EAT AND DRINK</span>
+        <h3>Find your favourite.</h3>
+        <strong>Explore the menu</strong>
+      </div></a
+    ><a class="explore-card" href="/story/" data-reveal
+      ><img
+        src="/assets/graphic/family-instagram.webp"
+        alt="The family behind Wild and The Sun outside their café"
+        width="1100"
+        height="1310"
+        loading="lazy"
+      />
+      <div>
+        <span>02 / THE PEOPLE</span>
+        <h3>A family place.</h3>
+        <strong>Read our story</strong>
+      </div></a
+    ><a class="explore-card" href="/venue-hire/" data-reveal
+      ><img
+        src="/assets/client/specialty-pair.jpg"
+        alt="Two specialty drinks at Wild and The Sun"
+        width="1122"
+        height="1402"
+        loading="lazy"
+      />
+      <div>
+        <span>03 / TOGETHER</span>
+        <h3>Bring your people.</h3>
+        <strong>Gather here</strong>
+      </div></a
+    >
+  </div>
+</section>
+<section class="home-visit" aria-labelledby="home-visit-title">
+  <div class="home-visit-inner layout-wrap">
+    <div>
+      <p class="kicker">YOUR SUNNY SPOT</p>
+      <h2 id="home-visit-title">Right around<br /><em>your corner.</em></h2>
+      <p>
+        Find us near Woolworths at Aberfoyle Hub. A good coffee and a warm
+        welcome are waiting.
+      </p>
+      <p class="today-hours" data-today-hours>Open Tuesday to Sunday</p>
+      <a class="button button-cream" href="/visit/"
+        >Plan your visit <span class="button-arrow" aria-hidden="true"></span
+      ></a>
     </div>
-    <div class="footer-bottom layout-wrap"><span>© <span id="year"></span> Wild and The Sun Açaí Cafe</span><span>Family-run in Aberfoyle Park.</span></div>
-  </footer>
-  <div class="mobile-dock" id="mobile-dock" aria-label="Quick actions"><a href="/book/">Book a table</a><a href="https://wild-and-the-sun.square.site/s/order#most-popular" target="_blank" rel="noopener noreferrer">Order online</a></div>
-</body>
+    <img
+      src="/assets/client/smoothie-trio.jpg"
+      alt="Three colourful smoothies from Wild and The Sun"
+      width="1122"
+      height="1402"
+      loading="lazy"
+    />
+  </div>
+</section>
+</main>
+    <footer class="site-footer">
+  <div class="footer-main layout-wrap">
+    <div class="footer-brand">
+      <a href="/" aria-label="Wild and The Sun home"
+        ><img
+          src="/assets/brand/official-logo-banner.jpg"
+          alt="Wild and The Sun Açaí Cafe"
+          width="1200"
+          height="327"
+          loading="lazy"
+      /></a>
+      <p>Colourful bowls, good coffee and a warm welcome in Aberfoyle Park.</p>
+    </div>
+    <div class="footer-links">
+      <h2>Explore</h2>
+      <a href="/menu/">Menu</a><a href="/venue-hire/">Gather here</a
+      ><a href="/story/">Our story</a><a href="/book/">Book a table</a
+      ><a href="/visit/">Visit us</a>
+    </div>
+    <div class="footer-contact">
+      <h2>Find us</h2>
+      <p data-business-address>
+        Shop 4, Aberfoyle Hub<br />130-150 Hub Drive<br />Aberfoyle Park SA 5159
+      </p>
+      <a data-business-phone href="tel:+61451661351">0451 661 351</a
+      ><a
+        href="https://www.instagram.com/wild_and_the_sun_acai_cafe/"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Instagram</a
+      ><a
+        data-directions
+        href="https://www.google.com/maps/dir/?api=1&amp;destination=Wild+and+the+Sun+Acai+Cafe%2C+Shop+4%2C+130-150+Hub+Drive%2C+Aberfoyle+Park+SA+5159"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Get directions</a
+      >
+    </div>
+  </div>
+  <div class="footer-bottom layout-wrap">
+    <span
+      >© <span id="year">2026</span>
+      <span data-business-name>Wild and The Sun Açaí Cafe</span></span
+    ><span>Made for the good days.</span>
+  </div>
+</footer>
+
+    <div class="mobile-dock" id="mobile-dock" aria-label="Quick actions">
+      <a href="/book/">Book a table</a
+      ><a href="https://wild-and-the-sun.square.site/s/order#most-popular" target="_blank" rel="noopener noreferrer"
+        >Order online</a
+      >
+    </div>
+  </body>
 </html>

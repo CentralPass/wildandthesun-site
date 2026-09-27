@@ -1,59 +1,14 @@
 (() => {
   'use strict';
 
-  const PHONE = '0451 661 351';
-  const PHONE_HREF = 'tel:+61451661351';
   const root = document.getElementById('booking-root');
-  const menuButton = document.querySelector('.menu-toggle');
-  const menu = document.getElementById('primary-nav');
-  const mobileDock = document.getElementById('mobile-dock');
-  const mobileScreen = window.matchMedia('(max-width: 760px)');
-  let pastHero = false;
-  let bookingVisible = false;
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  function updateMobileDock() {
-    mobileDock.classList.toggle('is-visible', mobileScreen.matches && pastHero && !bookingVisible && menuButton.getAttribute('aria-expanded') !== 'true');
-  }
-
-  menuButton.addEventListener('click', () => {
-    const open = menuButton.getAttribute('aria-expanded') !== 'true';
-    menuButton.setAttribute('aria-expanded', String(open));
-    menuButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-    menu.classList.toggle('is-open', open);
-    updateMobileDock();
+  const phone = () => window.WILD_SUN_BUSINESS_PHONE || { label: '0451 661 351', href: 'tel:+61451661351' };
+  document.addEventListener('wildsun:business-settings', () => {
+    root.querySelectorAll('[data-booking-phone]').forEach((link) => {
+      link.href = phone().href;
+      link.textContent = link.textContent.replace('0451 661 351', phone().label);
+    });
   });
-  menu.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
-    menu.classList.remove('is-open');
-    menuButton.setAttribute('aria-expanded', 'false');
-    menuButton.setAttribute('aria-label', 'Open menu');
-    updateMobileDock();
-  }));
-
-  if ('IntersectionObserver' in window) {
-    const dockObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.target.id === 'top') pastHero = !entry.isIntersecting && entry.boundingClientRect.bottom < 0;
-        if (entry.target.id === 'book') bookingVisible = entry.isIntersecting;
-      });
-      updateMobileDock();
-    }, { threshold: 0 });
-    dockObserver.observe(document.getElementById('top'));
-    dockObserver.observe(document.getElementById('book'));
-
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.documentElement.classList.add('motion-ready');
-      const revealObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add('is-revealed');
-          observer.unobserve(entry.target);
-        });
-      }, { rootMargin: '0px 0px -24px 0px', threshold: 0.08 });
-      document.querySelectorAll('[data-reveal]').forEach((element) => revealObserver.observe(element));
-    }
-  }
-  mobileScreen.addEventListener?.('change', updateMobileDock);
 
   const configuredBase = String(window.WILD_SUN_CONFIG?.centralpassApiBase || '').trim().replace(/\/+$/, '');
   let apiBase = '';
@@ -73,8 +28,9 @@
     const explanation = document.createElement('p');
     explanation.textContent = message;
     const call = document.createElement('a');
-    call.href = PHONE_HREF;
-    call.textContent = `Call ${PHONE} to book a table`;
+    call.href = phone().href;
+    call.dataset.bookingPhone = '';
+    call.textContent = `Call ${phone().label} to book a table`;
     box.append(explanation, call);
     root.append(box);
   }
@@ -82,7 +38,11 @@
   function showOnlineBookingMessage() {
     document.getElementById('booking-intro-copy').textContent = 'Meeting friends or taking a slow morning? We’d love to see you. Choose your date and party size to check live table availability.';
     document.getElementById('booking-panel-title').textContent = 'Find your table';
-    document.getElementById('booking-panel-copy').textContent = 'Reservations are handled by CentralPass.';
+    document.getElementById('booking-panel-copy').textContent = 'Choose your date and party size to see available times.';
+    const heroAction = document.getElementById('booking-hero-action');
+    heroAction.href = '#book';
+    heroAction.removeAttribute('data-business-phone');
+    heroAction.innerHTML = 'Check table availability <span class="button-arrow" aria-hidden="true"></span>';
   }
 
   async function request(path, options = {}) {
@@ -92,7 +52,7 @@
       cache: 'no-store',
     });
     const payload = await response.json().catch(() => ({}));
-    if (!response.ok) throw new Error(payload.error || `CentralPass returned ${response.status}.`);
+    if (!response.ok) throw new Error(payload.error || `Booking service returned ${response.status}.`);
     return payload;
   }
 
@@ -217,8 +177,9 @@
         const text = document.createElement('span');
         text.textContent = `For groups over ${maxParty}, please call us on `;
         const link = document.createElement('a');
-        link.href = PHONE_HREF;
-        link.textContent = PHONE;
+        link.href = phone().href;
+        link.dataset.bookingPhone = '';
+        link.textContent = phone().label;
         help.append(text, link, document.createTextNode('.'));
         return;
       }

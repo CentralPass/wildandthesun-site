@@ -8,7 +8,7 @@ try {
   $stage = Join-Path ([IO.Path]::GetTempPath()) $stageName
   New-Item -ItemType Directory -Path $stage | Out-Null
 
-  Copy-Item -LiteralPath 'index.html', 'design.css', 'site.js', 'booking.js', 'config.js', 'menu-data.js', 'menu-page.js', 'venue-planner.js' -Destination $stage
+  Copy-Item -LiteralPath 'index.html', 'design.css', 'site.js', 'booking.js', 'business-settings.js', 'config.js', '404.html' -Destination $stage
   Copy-Item -LiteralPath 'assets', 'menu', 'story', 'visit', 'book', 'venue-hire' -Destination $stage -Recurse
   [IO.File]::WriteAllText((Join-Path $stage '_headers'), "/*`n  X-Robots-Tag: noindex`n", [Text.UTF8Encoding]::new($false))
 
