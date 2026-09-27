@@ -1,9 +1,7 @@
 import { access, mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
-const previewOrigin = 'https://wild-and-the-sun-preview.pages.dev';
-const publicOrigin = (process.env.PUBLIC_SITE_ORIGIN || '').replace(/\/+$/, '');
-const shareOrigin = publicOrigin || previewOrigin;
+const publicOrigin = (process.env.PUBLIC_SITE_ORIGIN || 'https://wild-and-the-sun.pages.dev').replace(/\/+$/, '');
 const squareUrl = 'https://wild-and-the-sun.square.site/s/order#most-popular';
 const pages = [
   { slug: '', key: 'home', title: 'Wild and The Sun Açaí Cafe | Aberfoyle Park', description: 'Açaí bowls, specialty drinks and a warm welcome at Wild and The Sun in Aberfoyle Park. Find us, view the café menu or order online.', image: '/assets/client/acai-trio.jpg' },
@@ -33,7 +31,7 @@ for (const page of pages) {
   const replacements = {
     TITLE: escapeHtml(page.title),
     DESCRIPTION: escapeHtml(page.description),
-    OG_IMAGE: escapeHtml(shareOrigin + page.image),
+    OG_IMAGE: escapeHtml(publicOrigin + page.image),
     CANONICAL: canonicalUrl ? '<link rel="canonical" href="' + escapeHtml(canonicalUrl) + '" />' : '',
     PAGE: page.key,
     NAV: activeNav,

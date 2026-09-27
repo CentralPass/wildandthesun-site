@@ -6,6 +6,10 @@ Six separate static pages: Home, Menu, Gather Here, Our Story, Visit, and Book a
 
 The phone-friendly review build is published to https://wild-and-the-sun-preview.pages.dev/. This Cloudflare Pages preview sends `X-Robots-Tag: noindex`. Run `pwsh -File .\deploy-preview.ps1` to rebuild and update it.
 
+## Public live site
+
+The `main` branch is deployed to https://wild-and-the-sun.pages.dev/ using `pwsh -File .\deploy-live.ps1`. The live site is publicly accessible but remains `noindex` while the approved menu image and venue-specific booking backend are pending. `build.mjs` generates canonical URLs and a sitemap for this address by default. Set `PUBLIC_SITE_ORIGIN` to a future custom HTTPS domain before building for that domain.
+
 ## Local build
 
 Run `node build.mjs`, then serve this directory with `python -m http.server 4173`. The build generates each page from `src/layout.html`, `src/nav.html`, `src/footer.html`, and `src/pages/*.html`. Shared styles and interactions are in `design.css` and `site.js`.
@@ -18,10 +22,10 @@ The site currently shows verified fallback contact details and hours. `config.js
 
 The Book page uses `GET /api/bookings/config`, `GET /api/bookings/availability` and `POST /api/bookings` when native bookings are enabled for this venue. Until then, or if the service is unavailable, the page offers a phone booking link. Before enabling live bookings, verify the venue identity, CORS, table inventory, a real reservation, diary visibility, confirmation delivery and booking management link.
 
-## Before public launch
+## Before search launch
 
 - Replace `assets/menu-preview.svg` with the café's approved menu image, keeping the full-size image link and useful alt text.
-- Confirm the final domain and build with `PUBLIC_SITE_ORIGIN` set to that HTTPS origin to emit canonical URLs and a sitemap.
+- Confirm the final custom domain, if one is wanted, and update the build origin before making the site indexable.
 - Configure and test the venue's own admin and booking backend.
 - Review fallback phone, address and hours against the owner. Current fallback hours and phone are listed by the Aberfoyle Hub store directory.
 - Keep the Square destination current: https://wild-and-the-sun.square.site/s/order#most-popular.
