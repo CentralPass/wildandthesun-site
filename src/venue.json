@@ -1,0 +1,17 @@
+{
+  "_comment": "Fallback only. When CENTRALPASS_API_BASE is set, build.mjs replaces these values with the venue details and hours saved in the CentralPass admin portal (Settings > Venue, and Hours), and venue.js refreshes them live in the browser. Leave abn/email null rather than guessing; empty values are hidden on the site.",
+  "name": "Wild and The Sun Açaí Cafe",
+  "phone": "0451 661 351",
+  "address": "Shop 4, Aberfoyle Hub, 130-150 Hub Drive, Aberfoyle Park SA 5159",
+  "email": null,
+  "abn": null,
+  "hours": [
+    { "day_of_week": 0, "is_open": true, "open_time": "09:00", "close_time": "14:00" },
+    { "day_of_week": 1, "is_open": false, "open_time": null, "close_time": null },
+    { "day_of_week": 2, "is_open": true, "open_time": "09:00", "close_time": "17:00" },
+    { "day_of_week": 3, "is_open": true, "open_time": "09:00", "close_time": "17:00" },
+    { "day_of_week": 4, "is_open": true, "open_time": "09:00", "close_time": "17:00" },
+    { "day_of_week": 5, "is_open": true, "open_time": "09:00", "close_time": "17:00" },
+    { "day_of_week": 6, "is_open": true, "open_time": "09:00", "close_time": "17:00" }
+  ]
+}

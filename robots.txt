@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://wild-and-the-sun.pages.dev/sitemap.xml

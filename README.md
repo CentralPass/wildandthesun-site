@@ -1,31 +1,62 @@
 # Wild and The Sun café website
 
-Six separate static pages: Home, Menu, Gather Here, Our Story, Visit, and Book a Table. The site uses the café's photographs and official logo, plus a clearly marked temporary menu image. It has no ordering flow or duplicated product catalogue. Every Order Online action opens the café's Square store.
+Four static pages: **Home**, **Menu**, **Visit us** (our story, groups and occasions, hours and location) and **Book a table**. The old `/story/` and `/venue-hire/` addresses redirect to the matching part of Visit us. Every Order online action opens the café's Square store; ordering is not part of CentralPass.
 
-## Review preview
+## What comes from CentralPass
 
-The phone-friendly review build is published to https://wild-and-the-sun-preview.pages.dev/. This Cloudflare Pages preview sends `X-Robots-Tag: noindex`. Run `pwsh -File .\deploy-preview.ps1` to rebuild and update it.
+The site connects to Wild and The Sun's own CentralPass backend for three things only:
 
-## Public live site
+| On the site | Comes from | Where the café changes it |
+|---|---|---|
+| Venue name, phone, address, email, ABN | `GET /api/settings/public` | Admin → Settings → Venue |
+| Opening hours, today's open/closed status, special days | `GET /api/settings/hours` | Admin → Hours (the **Hours** feature) |
+| Table bookings and Stripe booking deposits | `/api/bookings/*`, `/api/booking-portal/checkout` | Admin → Settings → Bookings, staff diary |
 
-The `main` branch is deployed to https://wild-and-the-sun.pages.dev/ using `pwsh -File .\deploy-live.ps1`. The live site is publicly accessible but remains `noindex` while the approved menu image and venue-specific booking backend are pending. `build.mjs` generates canonical URLs and a sitemap for this address by default. Set `PUBLIC_SITE_ORIGIN` to a future custom HTTPS domain before building for that domain.
+Details are read at build time, so the HTML, footer and search data already carry them, and read again in the browser by `venue.js`, so an edit in the admin shows on the site straight away without a rebuild. A blank email or ABN in the admin hides that line. The site refuses to show details from a backend whose venue name is not Wild and The Sun. `src/venue.json` is only the fallback used when no backend is configured or it cannot be reached.
+
+### Booking flow
+
+`booking.js` loads the booking settings, shows live availability for the actual party size, and creates the booking with a retry-safe `request_id`. When the venue's deposit rules apply, the guest accepts the displayed policy, the table is held as pending, and they go straight to Stripe Checkout. Payment is confirmed by Stripe webhooks on the backend, never by this page. Stripe returns the guest to their private CentralPass booking page. If they come back to the site without paying, the held table is recovered from the session and they can pay or open their booking page. When the backend is unset, bookings are switched off, or anything fails, the page offers a phone booking using the admin phone number.
+
+## Connecting the backend
+
+Build or deploy with the backend's HTTPS origin (no `/api`):
+
+```powershell
+pwsh -File .\deploy-live.ps1 -ApiBase https://api.wildandthesun.com.au
+```
+
+`CENTRALPASS_API_BASE` works the same way for `node build.mjs`. The build writes `config.js` and a Content-Security-Policy in `_headers` that only allows network requests to that origin, so rebuild whenever the API address changes.
+
+On the CentralPass side, before switching it on:
+
+1. **Console:** enable **Bookings**, **Booking deposits** and **Hours** for this venue. Nothing else is needed.
+2. **Backend environment:** `CORS_ORIGIN` must include this site's origin (for example `https://wild-and-the-sun.pages.dev` and any custom domain). `BOOKING_PORTAL_URL=https://<api host>/booking` so guests have a booking page and Stripe has somewhere to return. `BOOKING_PAYMENTS_ENABLED=true` with the venue's own `STRIPE_SECRET_KEY` and `STRIPE_WEBHOOK_SECRET`, and the Stripe webhook at `/api/stripe/webhook` sending `checkout.session.completed` and `charge.refunded`.
+3. **Admin → Settings → Venue:** the name must contain "Wild … Sun". Fill in phone, address, and email and ABN if they should appear.
+4. **Admin → Hours:** enter the real trading hours. A new venue starts with Monday to Saturday 7am to 3pm and Sunday closed, which the site and the booking diary would otherwise show.
+5. **Admin → Settings → Bookings:** turn on online bookings and save the deposit rules the café has approved.
+6. Test in Stripe test mode first: a normal booking, a deposit booking paid and abandoned, a cancellation refund, and confirm each appears in the staff diary.
+
+The platform allows 20 public booking requests a minute per visitor. The page caches availability briefly so moving between days does not use that up.
 
 ## Local build
 
-Run `node build.mjs`, then serve this directory with `python -m http.server 4173`. The build generates each page from `src/layout.html`, `src/nav.html`, `src/footer.html`, and `src/pages/*.html`. Shared styles and interactions are in `design.css` and `site.js`.
+Run `node build.mjs`, then serve this folder with `python -m http.server 4173`. Pages are generated from `src/layout.html`, `src/nav.html`, `src/footer.html` and `src/pages/*.html`. Venue details in templates must use the `{{VENUE_*}}` markers; the build fails if a phone number or address is hard-coded. Styles are in `design.css`; interactions in `site.js`; venue details in `venue.js`; bookings in `booking.js`.
 
-## Café admin connection
+To test against a local CentralPass backend, run it on port 3000 with `CORS_ORIGIN=http://localhost:4173` and build with `CENTRALPASS_API_BASE=http://localhost:3000`. Rebuild without it before committing so `config.js` does not point at your machine.
 
-The site currently shows verified fallback contact details and hours. `config.js` intentionally leaves `centralpassApiBase` empty until Wild and The Sun has its own backend. When it is ready, set this to that venue's HTTPS API origin, without `/api`, and allow the final site origin in the backend's CORS configuration. Do not point it at another venue's backend or expose private keys in browser code.
+Photos in `assets/client` and `assets/graphic/family-instagram.webp` have 560, 800 and full-width WebP versions. The build serves them automatically with the original as a fallback; generate the same three sizes for any new photo.
 
-`business-settings.js` reads only `GET /api/settings/public` and `GET /api/settings/hours` to update the café name, address, phone and trading hours. It checks the venue name first. Ordering controls, ordering availability, payment methods and private admin settings are not used. Changes to the business details and hours are made in the venue's existing admin.
+## Deployment
 
-The Book page uses `GET /api/bookings/config`, `GET /api/bookings/availability` and `POST /api/bookings` when native bookings are enabled for this venue. Until then, or if the service is unavailable, the page offers a phone booking link. Before enabling live bookings, verify the venue identity, CORS, table inventory, a real reservation, diary visibility, confirmation delivery and booking management link.
+- Preview: `pwsh -File .\deploy-preview.ps1` publishes https://wild-and-the-sun-preview.pages.dev/. Without `-ApiBase`, the preview's Book page runs `booking-demo.js`: sample times and a sample deposit rule, clearly labelled, with nothing saved or charged, so the booking form can be reviewed before the backend exists.
+- Live: `pwsh -File .\deploy-live.ps1` publishes https://wild-and-the-sun.pages.dev/. The live build never includes the demo.
+
+Both stay `noindex` until launch. Security headers come from the generated `_headers` file.
 
 ## Before search launch
 
-- Replace `assets/menu-preview.svg` with the café's approved menu image, keeping the full-size image link and useful alt text.
-- Confirm the final custom domain, if one is wanted, and update the build origin before making the site indexable.
-- Configure and test the venue's own admin and booking backend.
-- Review fallback phone, address and hours against the owner. Current fallback hours and phone are listed by the Aberfoyle Hub store directory.
-- Keep the Square destination current: https://wild-and-the-sun.square.site/s/order#most-popular.
+- Replace `assets/menu-preview.svg` with the café's approved menu image, keeping the full-size link and useful alt text.
+- Set `PUBLIC_SITE_ORIGIN` to the final custom HTTPS domain if there is one, and `SITE_INDEXABLE=true`, then rebuild.
+- Connect and test the venue's CentralPass backend as above, and review the venue details and hours in the admin with the owner.
+- Keep the Square destination current: https://wild-and-the-sun.square.site/s/order#most-popular

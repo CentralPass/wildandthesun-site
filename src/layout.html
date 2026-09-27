@@ -2,68 +2,72 @@
 <html lang="en-AU">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#163307" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f8e4da" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="description" content="{{DESCRIPTION}}" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_AU" />
+    <meta property="og:site_name" content="{{VENUE_NAME}}" />
     <meta property="og:title" content="{{TITLE}}" />
     <meta property="og:description" content="{{DESCRIPTION}}" />
+    <meta property="og:url" content="{{OG_URL}}" />
     <meta property="og:image" content="{{OG_IMAGE}}" />
     <meta name="twitter:card" content="summary_large_image" />
     <title>{{TITLE}}</title>
     {{CANONICAL}}
-    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/assets/brand/favicon-64.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..700&amp;family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,0..100;1,9..144,300..600,0..100&amp;display=swap"
       rel="stylesheet"
     />
-    {{PRELOAD}}
-    <link rel="stylesheet" href="/design.css?v=20260927-rebuild1" />
-    <script src="/config.js" defer></script>
-    <script src="/business-settings.js" defer></script>
-    <script src="/site.js" defer></script>
+    <link rel="stylesheet" href="/design.css?v={{VERSION}}" />
+    <script>document.documentElement.classList.add('js');</script>
+    <script type="application/json" id="venue-data">{{VENUE_JSON}}</script>
+    <script src="/config.js?v={{VERSION}}" defer></script>
+    <script src="/venue.js?v={{VERSION}}" defer></script>
+    <script src="/site.js?v={{VERSION}}" defer></script>
     {{PAGE_SCRIPTS}}
+    {{HEAD_EXTRA}}
   </head>
   <body class="page-{{PAGE}}">
     <a class="skip-link" href="#main">Skip to content</a>
-    <header class="site-header">
-      <a class="brand" href="/" aria-label="Wild and The Sun home"
-        ><img
-          src="/assets/brand/official-logo-banner.jpg"
-          alt="Wild and The Sun Açaí Cafe"
-          width="1200"
-          height="327"
-      /></a>
+    <header class="site-header" data-header>
+      <a class="brand" href="/" aria-label="{{VENUE_NAME}}, home"
+        ><span class="logo-wordmark" aria-hidden="true"></span
+      ></a>
+      <nav class="primary-nav" id="primary-nav" aria-label="Main">
+        {{NAV}}
+      </nav>
+      <div class="header-actions">
+        <a
+          class="header-link"
+          href="{{SQUARE_URL}}"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Order online<span class="external" aria-hidden="true">↗</span
+          ><span class="sr-only"> (opens Square in a new tab)</span></a
+        >
+        <a class="btn btn-primary btn-small" href="/book/">Book<span class="hide-xs">&nbsp;a table</span></a>
+      </div>
       <button
         class="menu-toggle"
         type="button"
         aria-expanded="false"
         aria-controls="primary-nav"
-        aria-label="Open menu"
       >
-        <span></span><span></span>
+        <span class="sr-only">Menu</span><span class="menu-toggle-lines" aria-hidden="true"></span>
       </button>
-      <nav class="primary-nav" id="primary-nav" aria-label="Main navigation">
-        {{NAV}}
-      </nav>
-      <a
-        class="header-order"
-        href="{{SQUARE_URL}}"
-        target="_blank"
-        rel="noopener noreferrer"
-        >Order online <span class="button-arrow" aria-hidden="true"></span
-      ></a>
     </header>
     <main id="main">{{BODY}}</main>
     {{FOOTER}}
-    <div class="mobile-dock" id="mobile-dock" aria-label="Quick actions">
-      <a href="/book/">Book a table</a
-      ><a href="{{SQUARE_URL}}" target="_blank" rel="noopener noreferrer"
-        >Order online</a
+    <div class="mobile-dock" id="mobile-dock">
+      <a class="btn btn-primary" href="/book/">Book a table</a
+      ><a class="btn btn-light" href="{{SQUARE_URL}}" target="_blank" rel="noopener noreferrer"
+        >Order online<span class="sr-only"> (opens Square in a new tab)</span></a
       >
     </div>
   </body>
