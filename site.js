@@ -15,14 +15,6 @@
   const year = document.getElementById('year');
   if (year) year.textContent = String(new Date().getFullYear());
 
-  const reviews = document.querySelector('.reviews-banner');
-  const reviewsToggle = document.querySelector('.reviews-toggle');
-  reviewsToggle?.addEventListener('click', () => {
-    const paused = reviews.classList.toggle('is-paused');
-    reviewsToggle.setAttribute('aria-pressed', String(paused));
-    reviewsToggle.textContent = paused ? 'Play reviews' : 'Pause reviews';
-  });
-
   const menuButton = document.querySelector('.menu-toggle');
   const menu = document.getElementById('primary-nav');
   const mobileDock = document.getElementById('mobile-dock');
