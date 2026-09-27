@@ -524,7 +524,7 @@ p { line-height: 1.7; }
 /* Logo palette, uncropped photography and customer reviews. */
 .site-header { background: var(--forest); color: var(--pink); border-bottom-color: var(--forest); }
 .header-order { border-color: var(--pink); }
-.menu-toggle span { background: var(--pink); }
+.menu-toggle span { background: #fff8f2; }
 .primary-nav.is-open { background: var(--forest); }
 .primary-nav .mobile-order-link { border-color: var(--pink); }
 .placeholder-menu-page { padding-block: 50px 80px; background: var(--pink-light); }
@@ -551,13 +551,16 @@ p { line-height: 1.7; }
 .image-clip img, .story-photo-one img, .story-photo-two img { height: auto; object-fit: contain; }
 .editorial-card:hover img { transform: none; }
 .party-planner-picture img, .book-extra-image img { object-fit: contain; }
-.site-footer { background: var(--forest); }
+.site-footer { background: var(--pink); color: var(--forest); }
 .footer-main { padding-block: 100px; }
 .footer-logo { width: 350px; }
-.footer-lead p, .footer-column a, .footer-column p { font-size: 17px; }
+.footer-lead p, .footer-column a, .footer-column p { color: var(--forest); font-size: 17px; }
 .footer-column h2 { font-size: 14px; }
 .footer-column a { min-height: 32px; }
-.footer-bottom { font-size: 13px; padding-block: 28px; }
+.footer-bottom { color: var(--forest); border-top-color: #16330740; font-size: 13px; padding-block: 28px; }
+.party-planner-stage { grid-template-columns: 1fr; min-height: 0; }
+.party-planner-controls { max-width: 820px; width: 100%; margin-inline: auto; }
+.venue-occasions article > span { display: none; }
 .menu-placeholder { padding-block: 100px; text-align: center; }
 .menu-placeholder h2 { font-size: clamp(46px,6vw,84px); line-height: 1.05; margin: 25px 0; }
 .menu-placeholder h2 em { color: #825064; }
@@ -578,17 +581,44 @@ p { line-height: 1.7; }
 @media (max-width: 760px) {
   .home-intro, .story-statement, .story-close-inner, .party-planner-intro { display: block; }
   .home-hero { display: flex; flex-direction: column; }
-  .hero-visual { order: -1; padding: 18px 20px; }
-  .hero-shot-main { width: 100%; height: auto; object-fit: contain; }
-  .hero-copy { padding: 26px 20px 30px; }
-  .hero-copy h1 { font-size: 48px; margin: 16px 0; }
+  .site-header { height: 64px; }
+  .brand-logo { width: 168px; height: 46px; }
+  .primary-nav { top: 64px; }
+  .hero-visual { order: -1; padding: 10px 20px; justify-content: center; }
+  .hero-image-stage { width: 210px; }
+  .hero-shot-main { width: 210px; height: auto; object-fit: contain; }
+  .hero-copy { padding: 17px 20px 23px; }
+  .hero-copy h1 { font-size: 40px; margin: 8px 0 10px; }
   .hero-copy h1 br { display: none; }
-  .hero-copy > p { margin-bottom: 18px; }
+  .hero-copy > p { margin-bottom: 12px; font-size: 13px; line-height: 1.5; }
+  .button-row { gap: 9px; }
+  .button { min-height: 44px; padding: 10px 13px; font-size: 10px; }
   .hero-bottom-note { display: none; }
   .placeholder-menu-grid { grid-template-columns: 1fr; gap: 12px; }
-  .footer-main { padding-block: 65px; }
-  .footer-logo { width: 320px; }
-  .footer-bottom { font-size: 13px; }
+  .reviews-banner { padding-block: 15px; }
+  .reviews-group blockquote { font-size: 22px; padding: 6px 22px; }
+  .home-intro, .story-statement { padding-top: 46px; padding-bottom: 34px; }
+  .home-intro h2, .story-statement h2 { margin-block: 0 14px; font-size: 40px; }
+  .editorial-grid { padding-bottom: 44px; }
+  .editorial-card, .card-offset, .card-small { flex-basis: 72%; }
+  .image-clip, .card-offset .image-clip, .card-small .image-clip { height: 225px; }
+  .editorial-meta { padding-top: 16px; }
+  .editorial-meta h3 { font-size: 29px; margin-bottom: 16px; }
+  .home-booking-band { padding-block: 48px; }
+  .home-booking-band h2, .simple-cta h2 { font-size: 42px; }
+  .inner-hero-copy, .book-hero-copy { padding-top: 44px; padding-bottom: 38px; }
+  .inner-hero h1, .book-hero h1, .story-hero h1 { font-size: 50px; }
+  .inner-hero-media, .book-hero-photo { justify-content: center; padding: 14px 20px; }
+  .inner-hero-media img, .book-hero-photo img { width: 250px; }
+  .story-hero-copy { padding-top: 45px; padding-bottom: 35px; }
+  .story-hero-photo { padding: 14px 20px; }
+  .story-hero-photo img { width: 250px; }
+  .visit-details, .book-section, .venue-occasions { padding-top: 48px; padding-bottom: 48px; }
+  .party-planner, .venue-expect { padding-bottom: 55px; }
+  .footer-main { padding-block: 48px; }
+  .footer-logo { width: 280px; }
+  .footer-lead p, .footer-column a, .footer-column p { font-size: 15px; }
+  .footer-bottom { font-size: 12px; }
   .menu-placeholder { padding-block: 65px; }
 }
 @media (prefers-reduced-motion: reduce) {
