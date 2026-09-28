@@ -1,0 +1,66 @@
+{
+  "_comment": "Menu highlights for the Menu page text, its structured data and llms.txt. Taken from the café's Square store in September 2026. No prices: Square has the current items and prices. Update this file when the menu changes.",
+  "sections": [
+    {
+      "id": "acai",
+      "name": "Açaí",
+      "description": "Açaí is a deep-purple berry from the Amazon. We serve it soft and creamy, topped with fresh fruit, granola, nut butters and drizzles.",
+      "items": [
+        { "name": "Classic Açaí Bowl", "description": "Açaí with banana, strawberry, granola and honey." },
+        { "name": "Small Açaí", "description": "A smaller serve of our creamy açaí." },
+        { "name": "Kids Açaí Bowl", "description": "Banana, granola, strawberry and agave." },
+        { "name": "Açaí add-on", "description": "Add açaí to a smoothie or chia pudding." }
+      ]
+    },
+    {
+      "id": "coffee",
+      "name": "Coffee, lattes and tea",
+      "description": "Espresso coffee made to order, plus our specialty lattes, hot and iced.",
+      "items": [
+        { "name": "Espresso coffee", "description": "Flat white, latte, cappuccino, long black, macchiato and espresso." },
+        { "name": "Pistachio Latte", "description": "A creamy pistachio latte, one of our most popular drinks." },
+        { "name": "Cookie Butter Latte", "description": "A latte made with cookie butter." },
+        { "name": "Spiced Matcha Latte", "description": "A matcha latte with spice." },
+        { "name": "Iced Strawberry Latte", "description": "Iced latte with strawberry." },
+        { "name": "Pistachio Affogato", "description": "Pistachio and espresso, affogato style." },
+        { "name": "Iced coffee, mocha, chai, turmeric latte and hot chocolate", "description": "Café favourites, plus a babyccino for little ones." },
+        { "name": "Tea", "description": "English breakfast, green tea and iced peach tea cold brew." }
+      ]
+    },
+    {
+      "id": "sweet",
+      "name": "Pastries and sweets",
+      "description": "Croissants, cakes and treats from the counter.",
+      "items": [
+        { "name": "Dubai Chocolate Croissant", "description": "A croissant with Dubai chocolate." },
+        { "name": "Pistachio Croissant", "description": "A croissant with pistachio." },
+        { "name": "Dubai Chocolate", "description": "Mini Dubai chocolates or a whole Dubai choc block." },
+        { "name": "Loaded Banana Bread", "description": "Fresh banana, peanut butter, chia and hemp seeds, and Nutella choc chips." },
+        { "name": "Waffles", "description": "Served with ice cream, strawberries and powdered sugar." },
+        { "name": "Cheesecake and Pistachio Cheesecake", "description": "By the slice." },
+        { "name": "Gluten-Free Brownie", "description": "Served with Nutella cream and fresh strawberries." },
+        { "name": "Banana bread, orange loaf, brownies and cookies", "description": "Choc chip and oatmeal cookies for a quick treat." }
+      ]
+    },
+    {
+      "id": "savoury",
+      "name": "Savoury",
+      "description": "Something warm and filling for lunch.",
+      "items": [
+        { "name": "Quesadilla", "description": "Veggie, chicken or beef." },
+        { "name": "Spinach, Ham and Cheese Croissant", "description": "A croissant with spinach, ham and cheese." },
+        { "name": "Gourmet Ham and Cheese Roll", "description": "A ham and cheese roll." }
+      ]
+    },
+    {
+      "id": "cold",
+      "name": "Smoothies and cold drinks",
+      "description": "Smoothies, milkshakes and grab-and-go drinks.",
+      "items": [
+        { "name": "Smoothies", "description": "Berry, mango and green smoothies, with protein or açaí to add." },
+        { "name": "Milkshakes", "description": "Classic milkshakes." },
+        { "name": "Fridge drinks", "description": "Grab-and-go cold drinks." }
+      ]
+    }
+  ]
+}

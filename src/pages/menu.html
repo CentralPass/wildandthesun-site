@@ -2,14 +2,16 @@
   <div class="sunlight" aria-hidden="true"><span></span><span></span><span></span></div>
   <div class="wrap page-hero-grid">
     <div class="page-hero-copy">
-      <p class="eyebrow">The café menu</p>
-      <h1 id="menu-title" class="split-title">
+      <p class="display-title split-title">
         <span class="line"><span>Good things,</span></span>
         <span class="line"><span><em>all in one place.</em></span></span>
+      </p>
+      <h1 id="menu-title" class="page-h1">
+        Our café menu: açaí bowls, specialty coffee, croissants, waffles and
+        more at Aberfoyle Hub, Aberfoyle Park.
       </h1>
       <p class="lede">
-        Açaí, smoothies, coffee and something savoury. For today’s items and
-        prices, order ahead through our Square store.
+        For today’s items and prices, order ahead through our online store.
       </p>
       <div class="actions">
         <a
@@ -32,7 +34,7 @@
         </svg>
       </div>
       <figure class="arch page-arch">
-        <img
+        <img data-sizes="(max-width: 900px) 70vw, 32vw"
           src="/assets/client/berry-choc.jpg"
           alt="Berry drink in a glass jar finished with a tall chocolate soft serve swirl"
           width="1122"
@@ -44,22 +46,33 @@
   </div>
 </section>
 
+<section class="menu-text" id="whats-on" aria-labelledby="menu-text-title">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <h2 id="menu-text-title">What’s on <em>the menu.</em></h2>
+      <a
+        class="text-link"
+        href="{{SQUARE_URL}}"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Today’s items and prices<span class="sr-only"> (opens our online store in a new tab)</span></a
+      >
+    </div>
+    <div class="menu-sections">
+      {{MENU_HIGHLIGHTS}}
+    </div>
+  </div>
+</section>
+
 <section class="menu-board" aria-labelledby="menu-image-title">
   <div class="wrap menu-board-grid">
     <div class="menu-board-intro" data-reveal>
-      <p class="eyebrow">Take a closer look</p>
       <h2 id="menu-image-title">The menu <em>board.</em></h2>
       <p>
         This is temporary menu artwork while our final menu image is being
         prepared. It shows the kinds of food and drink we serve, without prices.
         Square always has the current items and prices.
       </p>
-      <ul class="menu-categories" role="list">
-        <li class="tone-acai">Açaí bowls</li>
-        <li class="tone-mint">Coffee &amp; tea</li>
-        <li class="tone-sun">Smoothies &amp; drinks</li>
-        <li class="tone-blush">Savoury &amp; sweet</li>
-      </ul>
       <a
         class="btn btn-primary"
         href="{{SQUARE_URL}}"
@@ -90,7 +103,6 @@
 <section class="gallery" aria-labelledby="gallery-title">
   <div class="wrap">
     <div class="section-head" data-reveal>
-      <p class="eyebrow">Fresh from the counter</p>
       <h2 id="gallery-title">A taste of <em>what’s waiting.</em></h2>
     </div>
     <ul class="gallery-grid" role="list">

@@ -3,6 +3,62 @@
    berry smoothies, the mint shopfront and deep açaí. Forest green, the logo
    colour, is the ink and accent rather than a background. */
 
+/* Fonts are self-hosted (SIL Open Font License, see assets/fonts/OFL-*.txt):
+   no third-party request before the page can render. */
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/assets/fonts/dm-sans-normal-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("/assets/fonts/dm-sans-normal-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  font-style: italic;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url("/assets/fonts/fraunces-italic-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  font-style: italic;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url("/assets/fonts/fraunces-italic-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url("/assets/fonts/fraunces-normal-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 400 500;
+  font-display: swap;
+  src: url("/assets/fonts/fraunces-normal-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
   --oat: #fbf5ec;
   --paper: #fffdf9;
@@ -96,6 +152,13 @@ button {
   cursor: pointer;
 }
 
+a,
+button,
+label,
+summary {
+  -webkit-tap-highlight-color: transparent;
+}
+
 :focus-visible {
   outline: 3px solid var(--berry);
   outline-offset: 3px;
@@ -114,7 +177,8 @@ dd {
 
 h1,
 h2,
-h3 {
+h3,
+.display-title {
   font-family: var(--serif);
   font-weight: 400;
   font-variation-settings: "SOFT" 100;
@@ -123,7 +187,8 @@ h3 {
   text-wrap: balance;
 }
 
-h1 {
+h1,
+.display-title {
   font-size: clamp(2.7rem, min(7.2vw, 10.8vh), 7.2rem);
 }
 
@@ -137,10 +202,22 @@ h3 {
 }
 
 h1 em,
-h2 em {
+h2 em,
+.display-title em {
   font-style: italic;
   font-variation-settings: "SOFT" 100;
   color: var(--berry);
+}
+
+/* The descriptive H1 sits under the display slogan and reads like a lede. */
+.page-h1 {
+  max-width: 38ch;
+  margin: 0;
+  color: var(--ink);
+  font: 500 clamp(1.08rem, 1.3vw, 1.28rem) / 1.5 var(--sans);
+  font-variation-settings: normal;
+  letter-spacing: 0;
+  text-wrap: pretty;
 }
 
 p {
@@ -178,29 +255,6 @@ p {
 .wrap {
   width: min(100% - 2 * var(--gutter), 1320px);
   margin-inline: auto;
-}
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 1.1rem;
-  color: var(--berry);
-  font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: 0.16em;
-  line-height: 1.3;
-  text-transform: uppercase;
-}
-
-.eyebrow::before {
-  content: "";
-  width: 0.7rem;
-  height: 0.7rem;
-  flex: none;
-  border-radius: 50%;
-  background: var(--sun);
-  box-shadow: 0 0 0 4px rgba(255, 194, 71, 0.28);
 }
 
 .lede {
@@ -364,17 +418,24 @@ p {
   gap: clamp(1rem, 3vw, 3rem);
   height: var(--header-h);
   padding: 0 var(--gutter);
-  transition:
-    background-color 0.35s,
-    box-shadow 0.35s,
-    backdrop-filter 0.35s;
 }
 
-.site-header.is-scrolled {
-  background: rgba(251, 245, 236, 0.88);
+.site-header::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background: rgba(251, 245, 236, 0.9);
   box-shadow: 0 1px 0 var(--line);
   backdrop-filter: saturate(1.5) blur(14px);
   -webkit-backdrop-filter: saturate(1.5) blur(14px);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.site-header.is-scrolled::before {
+  opacity: 1;
 }
 
 .brand {
@@ -388,8 +449,8 @@ p {
 .logo-mark {
   display: block;
   background: var(--forest);
-  -webkit-mask: url("/assets/brand/logo-wordmark.png") center / contain no-repeat;
-  mask: url("/assets/brand/logo-wordmark.png") center / contain no-repeat;
+  -webkit-mask: url("/assets/brand/logo-wordmark.webp") center / contain no-repeat;
+  mask: url("/assets/brand/logo-wordmark.webp") center / contain no-repeat;
 }
 
 .logo-wordmark {
@@ -398,8 +459,8 @@ p {
 }
 
 .logo-mark {
-  -webkit-mask-image: url("/assets/brand/logo-mark.png");
-  mask-image: url("/assets/brand/logo-mark.png");
+  -webkit-mask-image: url("/assets/brand/logo-mark.webp");
+  mask-image: url("/assets/brand/logo-mark.webp");
 }
 
 .primary-nav {
@@ -421,19 +482,20 @@ p {
 .primary-nav > a::after {
   content: "";
   position: absolute;
-  left: 50%;
-  bottom: -4px;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  border-radius: 2px;
   background: var(--sun-deep);
-  transform: translateX(-50%) scale(0);
+  transform: scaleX(0);
+  transform-origin: left center;
   transition: transform 0.35s var(--ease);
 }
 
 .primary-nav > a:hover::after,
 .primary-nav > a[aria-current="page"]::after {
-  transform: translateX(-50%) scale(1);
+  transform: scaleX(1);
 }
 
 .nav-only-mobile {
@@ -592,9 +654,9 @@ p {
 
 /* Entrance for the intro copy only. Content injected later (the booking
    card's states) must not inherit a delayed fade. */
-.hero-copy > :not(h1),
-.page-hero-copy > :not(h1),
-.book-intro > :not(h1) {
+.hero-copy > :not(h1, .display-title),
+.page-hero-copy > :not(h1, .display-title),
+.book-intro > :not(h1, .display-title) {
   animation: fade-up 1s var(--ease) 0.35s both;
 }
 
@@ -627,9 +689,12 @@ p {
 }
 
 /* Soft window light drifting across the page, like the photography. */
+/* Fixed offsets, not percentages: the layer's corner must not move when a
+   section grows (for example as the booking form loads), or it counts as
+   layout shift. */
 .sunlight {
   position: absolute;
-  inset: -25%;
+  inset: -180px;
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
@@ -645,13 +710,13 @@ p {
 .sunlight span:nth-child(1) {
   background: repeating-linear-gradient(
     118deg,
-    transparent 0 7%,
-    rgba(255, 255, 255, 0.38) 7% 12%,
-    transparent 12% 19%,
-    rgba(255, 255, 255, 0.2) 19% 21%,
-    transparent 21% 30%
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 8%,
+    rgba(255, 255, 255, 0) 15%,
+    rgba(255, 255, 255, 0.14) 19%,
+    rgba(255, 255, 255, 0) 24%,
+    rgba(255, 255, 255, 0) 30%
   );
-  filter: blur(22px);
 }
 
 .sunlight span:nth-child(2) {
@@ -661,11 +726,10 @@ p {
 
 .sunlight span:nth-child(3) {
   background:
-    radial-gradient(9% 5% at 18% 70%, rgba(150, 80, 60, 0.09), transparent 70%),
-    radial-gradient(12% 6% at 26% 62%, rgba(150, 80, 60, 0.07), transparent 70%),
-    radial-gradient(7% 4% at 12% 58%, rgba(150, 80, 60, 0.08), transparent 70%),
-    radial-gradient(10% 5% at 84% 80%, rgba(150, 80, 60, 0.06), transparent 70%);
-  filter: blur(6px);
+    radial-gradient(10% 6% at 18% 70%, rgba(150, 80, 60, 0.08), transparent 75%),
+    radial-gradient(13% 7% at 26% 62%, rgba(150, 80, 60, 0.06), transparent 75%),
+    radial-gradient(8% 5% at 12% 58%, rgba(150, 80, 60, 0.07), transparent 75%),
+    radial-gradient(11% 6% at 84% 80%, rgba(150, 80, 60, 0.05), transparent 75%);
   animation-duration: 12s;
   animation-direction: alternate-reverse;
 }
@@ -684,6 +748,7 @@ p {
 .sun svg {
   width: 100%;
   overflow: visible;
+  animation: spin 60s linear infinite;
 }
 
 .sun circle {
@@ -692,8 +757,6 @@ p {
 
 .sun-rays {
   fill: var(--sun);
-  transform-origin: 0 0;
-  animation: spin 60s linear infinite;
 }
 
 .sun-rays .ray-short {
@@ -912,9 +975,17 @@ p {
   overflow: clip;
 }
 
+.ribbon-front,
+.ribbon-front .ribbon-track {
+  background: var(--sun);
+}
+
+.ribbon-back .ribbon-track {
+  background: var(--acai);
+}
+
 .ribbon-front {
   z-index: 2;
-  background: var(--sun);
   rotate: -2.2deg;
   box-shadow: 0 16px 30px -22px rgba(59, 18, 48, 0.5);
 }
@@ -1045,9 +1116,11 @@ p {
   margin-bottom: clamp(2rem, 4vw, 3.5rem);
 }
 
-.section-head .eyebrow {
+.section-lede {
   grid-column: 1 / -1;
-  margin-bottom: 0;
+  max-width: 62ch;
+  color: var(--ink-soft);
+  font-size: 1.08rem;
 }
 
 .section-head h2 {
@@ -1167,11 +1240,7 @@ p {
   color: var(--sun);
 }
 
-.tone-dark .eyebrow {
-  color: var(--sun);
-}
-
-.tone-dark p:not(.eyebrow) {
+.tone-dark p {
   color: rgba(251, 233, 238, 0.86);
 }
 
@@ -1216,7 +1285,7 @@ p {
   gap: 1.4rem;
 }
 
-.story-copy p:not(.eyebrow) {
+.story-copy p {
   font-size: 1.1rem;
 }
 
@@ -1250,11 +1319,7 @@ p {
   color: var(--acai-2);
 }
 
-.book-cta-copy .eyebrow {
-  color: var(--forest);
-}
-
-.book-cta-copy p:not(.eyebrow) {
+.book-cta-copy p {
   font-size: 1.12rem;
   max-width: 36ch;
 }
@@ -1332,6 +1397,118 @@ p {
 }
 
 /* Visit band */
+/* FAQ: short answers for people and for search and AI assistants. */
+.faq {
+  padding: clamp(4.5rem, 9vw, 8rem) 0;
+  background: var(--sun-soft);
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: start;
+  gap: clamp(2rem, 6vw, 6rem);
+}
+
+.faq-intro {
+  position: sticky;
+  top: calc(var(--header-h) + 2rem);
+  display: grid;
+  justify-items: start;
+  gap: 1.2rem;
+}
+
+.faq-intro p {
+  font-size: 1.1rem;
+}
+
+.faq-list {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.faq-item {
+  border-radius: 20px;
+  background: var(--paper);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.3rem;
+  border-radius: 20px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item h3 {
+  font: 600 1.05rem / 1.35 var(--sans);
+  font-variation-settings: normal;
+  letter-spacing: 0;
+}
+
+.faq-icon {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+.faq-icon::before,
+.faq-icon::after {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 0;
+  width: 16px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--forest);
+  transition: rotate 0.35s var(--ease);
+}
+
+.faq-icon::after {
+  rotate: 90deg;
+}
+
+.faq-item[open] .faq-icon::after {
+  rotate: 0deg;
+}
+
+.faq-answer {
+  padding: 0 1.3rem 1.25rem;
+}
+
+.faq-answer p {
+  color: var(--ink-soft);
+}
+
+/* Smooth open and close where the browser supports animating to auto. */
+@supports (interpolate-size: allow-keywords) {
+  .faq-item {
+    interpolate-size: allow-keywords;
+  }
+
+  .faq-item::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition:
+      block-size 0.4s var(--ease),
+      content-visibility 0.4s allow-discrete;
+  }
+
+  .faq-item[open]::details-content {
+    block-size: auto;
+  }
+}
+
 .visit-band {
   padding: clamp(4rem, 8vw, 7rem) 0;
 }
@@ -1388,10 +1565,6 @@ p {
   display: grid;
   justify-items: start;
   gap: clamp(1rem, 2.2vh, 1.6rem);
-}
-
-.page-hero-copy .eyebrow {
-  margin-bottom: 0;
 }
 
 .page-hero-copy .lede {
@@ -1459,6 +1632,60 @@ p {
 
 /* ---------- Menu page ---------- */
 
+.menu-text {
+  padding: clamp(4.5rem, 9vw, 7rem) 0 0;
+}
+
+.menu-sections {
+  columns: 3 290px;
+  column-gap: clamp(14px, 1.8vw, 24px);
+}
+
+.menu-section {
+  display: grid;
+  align-content: start;
+  gap: 0.7rem;
+  margin-bottom: clamp(14px, 1.8vw, 24px);
+  padding: clamp(1.3rem, 2.4vw, 2rem);
+  border-radius: var(--radius);
+  background: var(--tone);
+  color: var(--tone-ink);
+  break-inside: avoid;
+}
+
+.menu-section h3 {
+  font-size: clamp(1.6rem, 2.2vw, 2rem);
+}
+
+.menu-section > p {
+  opacity: 0.85;
+}
+
+.menu-section ul {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0.4rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.menu-section li {
+  display: grid;
+  gap: 0.1rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(23, 51, 12, 0.14);
+  border-top-color: color-mix(in srgb, currentColor 20%, transparent);
+}
+
+.menu-section li strong {
+  font-weight: 700;
+}
+
+.menu-section li span {
+  font-size: 0.93rem;
+  opacity: 0.85;
+}
+
 .menu-board {
   padding: clamp(4.5rem, 9vw, 8rem) 0;
 }
@@ -1474,10 +1701,6 @@ p {
   display: grid;
   justify-items: start;
   gap: 1.3rem;
-}
-
-.menu-board-intro .eyebrow {
-  margin-bottom: 0;
 }
 
 .menu-categories {
@@ -1638,11 +1861,7 @@ p {
   gap: 1.3rem;
 }
 
-.story-block-copy .eyebrow {
-  margin-bottom: 0;
-}
-
-.story-block-copy p:not(.eyebrow) {
+.story-block-copy p {
   font-size: 1.1rem;
 }
 
@@ -1701,10 +1920,6 @@ p {
   display: grid;
   justify-items: start;
   gap: 1.3rem;
-}
-
-.gather-copy .eyebrow {
-  margin-bottom: 0;
 }
 
 .gather-copy h2 em {
@@ -1919,11 +2134,7 @@ p {
   padding-top: clamp(0rem, 3vh, 2rem);
 }
 
-.book-intro .eyebrow {
-  margin-bottom: 0;
-}
-
-.book-intro h1 {
+.book-intro .display-title {
   font-size: clamp(2.8rem, 6vw, 5.8rem);
 }
 
@@ -1936,10 +2147,9 @@ p {
 }
 
 .book-notes li {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.85rem;
-  align-items: start;
+  display: block;
+  padding-left: 1rem;
+  border-left: 3px solid var(--sun);
 }
 
 .book-notes li[hidden] {
@@ -1962,14 +2172,6 @@ p {
   color: inherit;
 }
 
-.note-dot {
-  width: 0.8rem;
-  height: 0.8rem;
-  margin-top: 0.35rem;
-  border-radius: 50%;
-  background: var(--tone);
-}
-
 .booking-card {
   position: relative;
   padding: clamp(1.3rem, 3vw, 2.6rem);
@@ -1977,6 +2179,14 @@ p {
   background: var(--paper);
   box-shadow: 0 40px 80px -40px rgba(59, 18, 48, 0.45);
   animation: fade-up 1s var(--ease) 0.2s both;
+}
+
+/* Hold the form's space while it loads, so nothing below it jumps. */
+@media (max-width: 900px) {
+  .booking-card.is-connecting,
+  .booking-card.is-live {
+    min-height: 760px;
+  }
 }
 
 .booking-card.is-connecting > .booking-fallback {
@@ -1990,11 +2200,6 @@ p {
   align-content: start;
   justify-items: start;
   gap: 1.1rem;
-}
-
-.booking-fallback .eyebrow,
-.booking-state .eyebrow {
-  margin-bottom: 0;
 }
 
 .booking-fallback h2,
@@ -2016,31 +2221,8 @@ p {
   margin-bottom: 1.6rem;
 }
 
-.booking-head .eyebrow {
-  margin-bottom: 0.5rem;
-}
-
 .booking-head h2 {
   font-size: clamp(1.9rem, 3vw, 2.5rem);
-}
-
-.live-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.4rem 0.8rem;
-  border-radius: 999px;
-  background: var(--mint-soft);
-  font-size: 0.8rem;
-  font-weight: 700;
-}
-
-.live-pill i {
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 50%;
-  background: #2f9e58;
-  animation: pulse 2.2s infinite;
 }
 
 .booking-form.is-busy {
@@ -2084,8 +2266,13 @@ p {
   font-size: 0.8rem;
 }
 
-.field-hint {
+.time-slots + .field-hint,
+.stepper + .field-hint {
   margin-top: 0.7rem;
+}
+
+.field-hint {
+  margin: 0 0 0.7rem;
   color: var(--ink-soft);
   font-size: 0.9rem;
 }
@@ -2191,29 +2378,74 @@ p {
   opacity: 0.45;
 }
 
-.date-other {
+.date-picker {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0.7rem;
-  margin-top: 0.6rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--ink-soft);
-}
-
-.date-input {
-  min-height: 44px;
-  padding: 0.4rem 0.8rem;
-  border: 0;
-  border-radius: 12px;
+  gap: 0.55rem;
+  min-height: 46px;
+  margin-top: 0.7rem;
+  padding: 0.55rem 1.15rem 0.55rem 0.95rem;
+  border-radius: 999px;
   background: var(--oat);
-  box-shadow: inset 0 0 0 1px var(--line);
+  box-shadow: inset 0 0 0 1.5px var(--line);
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
 }
 
-.date-other.is-active .date-input {
+.date-picker:hover {
+  background: var(--sun-soft);
+}
+
+.date-picker:has(.date-picker-input:focus-visible) {
+  outline: 3px solid var(--berry);
+  outline-offset: 3px;
+}
+
+.date-picker svg {
+  width: 20px;
+  height: 20px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.date-picker.is-active {
   background: var(--forest);
+  box-shadow: none;
   color: var(--oat);
-  color-scheme: dark;
+}
+
+/* Transparent native input covering the button: phones open their own
+   picker on tap; desktop opens it via showPicker() in booking.js. */
+.date-picker-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  font-size: 16px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.date-picker-input::-webkit-calendar-picker-indicator {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .time-slots {
@@ -2527,6 +2759,56 @@ p {
   border-radius: 999px;
 }
 
+/* ---------- Privacy page ---------- */
+
+.legal-page {
+  padding: calc(var(--header-h) + clamp(2rem, 6vh, 4rem)) 0 clamp(4rem, 8vw, 6rem);
+  background: linear-gradient(180deg, var(--blush) 0, var(--oat) 420px);
+}
+
+.legal-wrap {
+  max-width: 760px;
+}
+
+.legal-wrap .display-title {
+  margin-bottom: 1.2rem;
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+}
+
+.legal-updated {
+  margin: 1rem 0 2.4rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.legal-body {
+  display: grid;
+  gap: 1rem;
+  font-size: 1.02rem;
+}
+
+.legal-body h2 {
+  margin-top: 1.4rem;
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+}
+
+.legal-body ul {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.legal-body .legal-contact {
+  padding-left: 0;
+  list-style: none;
+  font-weight: 600;
+}
+
+.legal-contact li[hidden] {
+  display: none;
+}
+
 /* ---------- Footer ---------- */
 
 .site-footer {
@@ -2710,24 +2992,35 @@ p {
     gap: 0.2rem;
     padding: calc(var(--header-h) + 1rem) var(--gutter) 2rem;
     background: var(--blush);
+    overscroll-behavior: contain;
     visibility: hidden;
     opacity: 0;
-    transition: opacity 0.35s, visibility 0s 0.35s;
+    transform: translateY(-10px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.45s var(--ease),
+      visibility 0s linear 0.45s;
   }
 
   .primary-nav.is-open {
     visibility: visible;
     opacity: 1;
-    transition: opacity 0.35s;
+    transform: none;
+    transition:
+      opacity 0.3s ease,
+      transform 0.45s var(--ease),
+      visibility 0s linear 0s;
   }
 
   .primary-nav > a {
     font: 400 clamp(2.4rem, 11vw, 3.4rem) / 1.15 var(--serif);
     font-variation-settings: "SOFT" 100;
     letter-spacing: -0.02em;
-    transform: translateY(16px);
+    transform: translateY(14px);
     opacity: 0;
-    transition: transform 0.6s var(--ease), opacity 0.6s var(--ease);
+    transition:
+      transform 0.5s var(--ease),
+      opacity 0.35s ease;
   }
 
   .primary-nav.is-open > a {
@@ -2751,17 +3044,6 @@ p {
     transition-delay: 0.2s;
   }
 
-  .primary-nav > a::after {
-    left: auto;
-    right: -1rem;
-    bottom: 50%;
-    transform: translateY(50%) scale(0);
-  }
-
-  .primary-nav > a[aria-current="page"]::after {
-    transform: translateY(50%) scale(1.4);
-  }
-
   .primary-nav .nav-only-mobile {
     display: block !important;
   }
@@ -2783,12 +3065,11 @@ p {
     white-space: nowrap;
   }
 
-  .menu-open .site-header {
-    background: var(--blush);
-    box-shadow: none;
-    backdrop-filter: none;
+  .menu-open .site-header::before {
+    opacity: 0;
   }
 
+  .menu-open,
   .menu-open body {
     overflow: hidden;
   }
@@ -2871,7 +3152,7 @@ p {
     gap: 1.4rem;
   }
 
-  h1 {
+  .display-title {
     font-size: clamp(2.4rem, 12.2vw, 3.8rem);
   }
 
@@ -2966,6 +3247,11 @@ p {
     scroll-snap-align: start;
   }
 
+  .faq-intro {
+    position: static;
+  }
+
+  .faq-grid,
   .story-grid,
   .book-cta-grid,
   .visit-band-inner,
@@ -3052,7 +3338,7 @@ p {
     margin-top: 1.4rem;
   }
 
-  .book-intro h1 {
+  .book-intro .display-title {
     font-size: clamp(2.4rem, 12.2vw, 3.8rem);
   }
 
@@ -3132,16 +3418,20 @@ p {
 
 /* ---------- Motion preferences ---------- */
 
-.motion-paused .sun-rays,
+.motion-paused .sun svg,
 .motion-paused .spin-badge svg,
 .motion-paused .ribbon-track,
 .motion-paused .sparkle,
 .motion-paused .sunlight span,
 .motion-paused .ticket,
-.motion-paused .hero-arch img,
-.motion-paused .hero-arch-small img,
-.motion-paused .page-arch img,
-.motion-paused .live-pill i {
+.motion-paused .arch img,
+.is-offscreen .sun svg,
+.is-offscreen .spin-badge svg,
+.is-offscreen .ribbon-track,
+.is-offscreen .sparkle,
+.is-offscreen .sunlight span,
+.is-offscreen .ticket,
+.is-offscreen .arch img {
   animation-play-state: paused !important;
 }
 

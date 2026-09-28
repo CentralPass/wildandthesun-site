@@ -75,7 +75,8 @@
     ticking = false;
     const y = window.scrollY;
     header?.classList.toggle('is-scrolled', y > 12);
-    if (!reducedMotion.matches && !html.classList.contains('motion-paused')) {
+    // Parallax only matters while the hero is on screen.
+    if (!reducedMotion.matches && !html.classList.contains('motion-paused') && y < window.innerHeight * 1.2) {
       parallax.forEach((element) => {
         const offset = Math.min(y, window.innerHeight) * -0.08;
         element.style.setProperty('--parallax', offset.toFixed(1) + 'px');
@@ -87,6 +88,15 @@
 
   if ('IntersectionObserver' in window && hero) {
     new IntersectionObserver(([entry]) => { pastHero = !entry.isIntersecting && entry.boundingClientRect.bottom < 0; updateDock(); }).observe(hero);
+  }
+
+  // Pause looping animations (sun, ribbons, photo zooms) while their section is
+  // off-screen, so scrolling stays smooth and phones save battery.
+  if ('IntersectionObserver' in window) {
+    const offscreen = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => entry.target.classList.toggle('is-offscreen', !entry.isIntersecting));
+    }, { rootMargin: '120px 0px' });
+    document.querySelectorAll('[data-hero], .ribbons, .story-teaser, .book-cta').forEach((element) => offscreen.observe(element));
   }
 
   // Reveal on scroll. Content is visible by default; this only adds polish.

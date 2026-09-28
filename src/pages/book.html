@@ -2,36 +2,31 @@
   <div class="sunlight" aria-hidden="true"><span></span><span></span><span></span></div>
   <div class="wrap book-grid">
     <div class="book-intro">
-      <p class="eyebrow">Book a table</p>
-      <h1 id="book-title" class="split-title">
+      <p class="display-title split-title">
         <span class="line"><span>Pull up</span></span>
         <span class="line"><span><em>a chair.</em></span></span>
-      </h1>
+      </p>
+      <h1 id="book-title" class="page-h1">Book a table at Wild and The Sun, Aberfoyle Park.</h1>
       <p class="lede" data-booking-intro>
         Give us a call during café hours and we will save you a seat.
       </p>
       <ul class="book-notes" role="list">
         <li>
-          <span class="note-dot tone-sun" aria-hidden="true"></span>
           <div><strong>Opening hours</strong><span data-open-status>{{HOURS_SUMMARY}}</span></div>
         </li>
         <li>
-          <span class="note-dot tone-mint" aria-hidden="true"></span>
           <div><strong>Coming as a group?</strong><span>Birthdays and bigger catch-ups start with a chat. <a href="/visit/#gather">Groups &amp; occasions</a></span></div>
         </li>
         <li data-deposit-note hidden>
-          <span class="note-dot tone-acai" aria-hidden="true"></span>
           <div><strong>Deposits</strong><span data-deposit-note-text>Some bookings need a deposit, paid securely with Stripe.</span></div>
         </li>
         <li>
-          <span class="note-dot tone-blush" aria-hidden="true"></span>
           <div><strong>Need to change a booking?</strong><span>Use your private booking link, or call <a data-venue-tel href="{{VENUE_TEL}}"><span data-venue="phone">{{VENUE_PHONE}}</span></a>.</span></div>
         </li>
       </ul>
     </div>
     <div class="booking-card{{BOOKING_CARD_CLASS}}" id="booking-root">
       <div class="booking-fallback">
-        <p class="eyebrow">Book by phone</p>
         <h2>Call us and we’ll save you a seat.</h2>
         <p>Tell us the day, time and how many are coming. We look forward to seeing you.</p>
         <a class="btn btn-primary" data-venue-tel href="{{VENUE_TEL}}"

@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#f8e4da" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>{{TITLE}}</title>
     <meta name="description" content="{{DESCRIPTION}}" />
+    <meta name="robots" content="{{ROBOTS_META}}" />
+    {{CANONICAL}}
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_AU" />
     <meta property="og:site_name" content="{{VENUE_NAME}}" />
@@ -13,17 +16,23 @@
     <meta property="og:description" content="{{DESCRIPTION}}" />
     <meta property="og:url" content="{{OG_URL}}" />
     <meta property="og:image" content="{{OG_IMAGE}}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="{{OG_ALT}}" />
     <meta name="twitter:card" content="summary_large_image" />
-    <title>{{TITLE}}</title>
-    {{CANONICAL}}
+    <meta name="twitter:title" content="{{TITLE}}" />
+    <meta name="twitter:description" content="{{DESCRIPTION}}" />
+    <meta name="twitter:image" content="{{OG_IMAGE}}" />
+    <meta name="geo.region" content="AU-SA" />
+    <meta name="geo.placename" content="Aberfoyle Park" />
+    <meta name="geo.position" content="{{GEO_POSITION}}" />
+    <meta name="ICBM" content="{{GEO_ICBM}}" />
     <link rel="icon" href="/assets/brand/favicon-64.png" type="image/png" />
     <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..700&amp;family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,0..100;1,9..144,300..600,0..100&amp;display=swap"
-      rel="stylesheet"
-    />
+    {{PRELOAD}}
+    <link rel="preload" href="/assets/fonts/fraunces-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/fraunces-italic-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/dm-sans-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/design.css?v={{VERSION}}" />
     <script>document.documentElement.classList.add('js');</script>
     <script type="application/json" id="venue-data">{{VENUE_JSON}}</script>
@@ -31,7 +40,7 @@
     <script src="/venue.js?v={{VERSION}}" defer></script>
     <script src="/site.js?v={{VERSION}}" defer></script>
     {{PAGE_SCRIPTS}}
-    {{HEAD_EXTRA}}
+    {{STRUCTURED_DATA}}
   </head>
   <body class="page-{{PAGE}}">
     <a class="skip-link" href="#main">Skip to content</a>

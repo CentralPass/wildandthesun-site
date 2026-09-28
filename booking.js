@@ -207,11 +207,11 @@
 
   function showFallback(message) {
     state.form = null;
+    root.classList.remove('is-live');
     const call = phoneLink('btn btn-primary');
     call.dataset.prefix = 'Call ';
     call.textContent = 'Call ' + phoneLabel();
     root.replaceChildren(h('div', { class: 'booking-fallback' },
-      h('p', { class: 'eyebrow', text: 'Book by phone' }),
       h('h2', { text: 'Call us and we’ll save you a seat.' }),
       h('p', { text: message }),
       call,
@@ -251,7 +251,9 @@
     const more = h('button', { type: 'button', class: 'stepper-btn', 'aria-label': 'More guests', text: '+' });
     const partyHint = h('p', { class: 'field-hint' });
     const dateStrip = h('div', { class: 'date-strip', role: 'group', 'aria-label': 'Choose a day' });
-    const dateInput = h('input', { type: 'date', class: 'date-input', 'aria-label': 'Or choose another date', min: venueToday(), max: addDays(venueToday(), state.maxDays) });
+    const dateInput = h('input', { type: 'date', class: 'date-picker-input', min: venueToday(), max: addDays(venueToday(), state.maxDays) });
+    const dateLabel = h('span', { class: 'date-picker-text', text: 'More dates' });
+    const datePicker = h('label', { class: 'date-picker' }, calendarIcon(), dateLabel, h('span', { class: 'sr-only', text: ', opens a calendar' }), dateInput);
     const times = h('div', { class: 'time-slots' });
     const timeStatus = h('p', { class: 'field-hint', role: 'status' });
     const nameInput = h('input', { name: 'name', type: 'text', autocomplete: 'name', maxlength: '120', required: true });
@@ -280,31 +282,35 @@
         h('label', { class: 'field' }, emailLabel, emailInput),
         h('label', { class: 'field' }, h('span', {}, 'Anything we should know? ', h('small', { text: '(optional)' })), notesInput)),
       deposit, summary, error, submit,
-      h('p', { class: 'fine-print', text: 'Your details are used only to manage this booking. You are not signed up for marketing.' }),
+      h('p', { class: 'fine-print' }, 'Your details are used only to manage this booking. You are not signed up for marketing. ', h('a', { href: '/privacy/', text: 'Privacy' })),
     );
     const form = h('form', { class: 'booking-form', 'aria-labelledby': 'booking-heading' },
       h('div', { class: 'booking-head' },
-        h('div', {}, h('p', { class: 'eyebrow', text: 'Reserve a table' }), h('h2', { id: 'booking-heading', tabindex: '-1', text: 'Find your table' })),
-        h('span', { class: 'live-pill' }, h('i', { 'aria-hidden': 'true' }), 'Live availability')),
+        h('h2', { id: 'booking-heading', tabindex: '-1', text: 'Find your table' })),
       h('fieldset', { class: 'field-group' },
         h('legend', {}, h('span', { class: 'step', text: '1' }), 'Guests'),
         h('div', { class: 'stepper' }, fewer, partyOutput, more), partyHint),
       h('fieldset', { class: 'field-group' },
         h('legend', {}, h('span', { class: 'step', text: '2' }), 'Day'),
-        dateStrip, h('label', { class: 'date-other' }, h('span', { text: 'Another date' }), dateInput)),
+        dateStrip, datePicker),
       h('fieldset', { class: 'field-group' },
         h('legend', {}, h('span', { class: 'step', text: '3' }), 'Time'),
-        times, timeStatus),
+        timeStatus, times),
       details,
     );
 
-    state.form = { form, partyOutput, fewer, more, partyHint, dateStrip, dateInput, times, timeStatus, details, nameInput, phoneInput, emailInput, emailLabel, notesInput, deposit, depositAmount, depositPolicy, depositAccept, summary, error, submit };
+    state.form = { form, partyOutput, fewer, more, partyHint, dateStrip, dateInput, dateLabel, datePicker, times, timeStatus, details, nameInput, phoneInput, emailInput, emailLabel, notesInput, deposit, depositAmount, depositPolicy, depositAccept, summary, error, submit };
     root.replaceChildren(form);
     if (config.demo) form.prepend(h('p', { class: 'demo-note', text: 'Preview only: sample times, and a sample deposit for groups of 8 or more. No booking is made.' }));
 
     fewer.addEventListener('click', () => setParty(state.party - 1));
     more.addEventListener('click', () => setParty(state.party + 1));
     dateInput.addEventListener('change', () => { if (dateInput.value) setDate(dateInput.value); });
+    // Desktop browsers only open the calendar from its own icon; open it from
+    // anywhere on the button. Phones open it natively on tap.
+    const openPicker = () => { try { dateInput.showPicker?.(); } catch (_) { /* Not allowed here; the native control still works. */ } };
+    dateInput.addEventListener('click', openPicker);
+    dateInput.addEventListener('keydown', (event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openPicker(); } });
     depositAccept.addEventListener('change', () => { error.hidden = true; });
     form.addEventListener('submit', submitBooking);
 
@@ -387,7 +393,8 @@
     }
     const inStrip = [...Array(count + 1).keys()].some((offset) => addDays(today, offset) === state.date);
     f.dateInput.value = inStrip ? '' : state.date;
-    f.dateInput.closest('.date-other').classList.toggle('is-active', !inStrip);
+    f.dateLabel.textContent = inStrip ? 'More dates' : formatDate(state.date, { weekday: 'short', day: 'numeric', month: 'short' });
+    f.datePicker.classList.toggle('is-active', !inStrip);
   }
 
   function setDate(value) {
@@ -665,7 +672,6 @@
     state.form = null;
     root.replaceChildren(h('div', { class: 'booking-state' },
       h('span', { class: 'spinner', 'aria-hidden': 'true' }),
-      h('p', { class: 'eyebrow', text: 'Table held' }),
       h('h2', { tabindex: '-1', text: 'Taking you to secure payment…' }),
       state.config?.demo ? h('p', { class: 'demo-note', text: 'Preview only: Stripe is skipped here. The live site opens Stripe’s secure checkout at this step.' }) : null,
       h('p', { role: 'status', text: 'Your ' + money(pending.cents) + ' deposit is paid through Stripe. You will come back to your booking page once it is done.' }),
@@ -687,7 +693,6 @@
       focusForm();
     });
     root.replaceChildren(h('div', { class: 'booking-state' },
-      h('p', { class: 'eyebrow', text: 'Table held · deposit needed' }),
       h('h2', { tabindex: '-1', text: 'Your table is waiting for you.' }),
       h('p', { text: 'Pay the ' + money(pending.cents) + ' deposit to confirm it. Unpaid tables are released when the payment window closes.' }),
       problem ? h('p', { class: 'booking-error', role: 'alert', text: problem }) : null,
@@ -766,7 +771,6 @@
     again.addEventListener('click', () => { renderForm(); focusForm(); });
     root.replaceChildren(h('div', { class: 'booking-state booking-success' },
       h('span', { class: 'success-mark', 'aria-hidden': 'true' }, successIcon()),
-      h('p', { class: 'eyebrow', text: depositPaid ? 'Deposit received' : confirmed ? 'Booking confirmed' : 'Request received' }),
       h('h2', { tabindex: '-1', text: heading }),
       h('p', { text: copy }),
       state.config?.demo ? h('p', { class: 'demo-note', text: 'Preview only: no booking was made and nothing was charged.' }) : null,
@@ -776,6 +780,18 @@
       again));
     root.querySelector('h2').focus({ preventScroll: true });
     scrollToElement(root);
+  }
+
+  function calendarIcon() {
+    const ns = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(ns, 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('focusable', 'false');
+    const path = document.createElementNS(ns, 'path');
+    path.setAttribute('d', 'M7 3v3M17 3v3M4 9h16M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm2 8h2m3 0h2m-7 4h2m3 0h2');
+    svg.append(path);
+    return svg;
   }
 
   function successIcon() {
