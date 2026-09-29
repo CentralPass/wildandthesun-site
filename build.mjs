@@ -360,6 +360,7 @@ const siteMarkers = {
   FAQ_ITEMS: faqHtml,
   MENU_HIGHLIGHTS: menuHtml,
   BOOKING_CARD_CLASS: centralpassApiBase || bookingDemo ? ' is-connecting' : '',
+  BOOKING_CREDIT_COPY: centralpassApiBase ? 'Bookings powered by' : bookingDemo ? 'Booking preview by' : 'Online booking page built by',
   ROBOTS_META: indexable ? 'index, follow, max-image-preview:large' : 'noindex, nofollow',
   GEO_POSITION: geo.latitude + ';' + geo.longitude,
   GEO_ICBM: geo.latitude + ', ' + geo.longitude,
@@ -420,7 +421,7 @@ for (const redirect of redirects) {
 
 await writeFile('config.js', configJs, 'utf8');
 
-for (const asset of ['assets/menu-preview.svg', 'assets/brand/logo-wordmark.webp', 'assets/brand/logo-mark.webp', 'assets/fonts/fraunces-normal-latin.woff2', 'assets/fonts/fraunces-italic-latin.woff2', 'assets/fonts/dm-sans-normal-latin.woff2', 'assets/fonts/OFL-fraunces.txt', 'assets/fonts/OFL-dmsans.txt', 'assets/brand/favicon-64.png', 'assets/brand/official-logo-full.jpg', ...pages.map((page) => page.ogImage.slice(1)), 'config.js', 'venue.js', 'site.js', 'booking.js', 'design.css', ...(bookingDemo ? ['booking-demo.js'] : [])]) {
+for (const asset of ['assets/menu-preview.svg', 'assets/brand/centralpass-mark.svg', 'assets/brand/logo-wordmark.webp', 'assets/brand/logo-mark.webp', 'assets/fonts/fraunces-normal-latin.woff2', 'assets/fonts/fraunces-italic-latin.woff2', 'assets/fonts/dm-sans-normal-latin.woff2', 'assets/fonts/OFL-fraunces.txt', 'assets/fonts/OFL-dmsans.txt', 'assets/brand/favicon-64.png', 'assets/brand/official-logo-full.jpg', ...pages.map((page) => page.ogImage.slice(1)), 'config.js', 'venue.js', 'site.js', 'booking.js', 'design.css', ...(bookingDemo ? ['booking-demo.js'] : [])]) {
   await access(asset);
 }
 

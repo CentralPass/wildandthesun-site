@@ -12,6 +12,8 @@ The site connects to Wild and The Sun's own CentralPass backend for three things
 | Opening hours, today's open/closed status, special days | `GET /api/settings/hours` | Admin → Hours (the **Hours** feature) |
 | Table bookings and Stripe booking deposits | `/api/bookings/*`, `/api/booking-portal/checkout` | Admin → Settings → Bookings, staff diary |
 
+The footer credits Central Pass for the website. The booking page credits the booking experience, with wording that changes between the phone fallback, sample preview and connected online bookings.
+
 Details are read at build time, so the HTML, footer and search data already carry them, and read again in the browser by `venue.js`, so an edit in the admin shows on the site straight away without a rebuild. A blank email or ABN in the admin hides that line. The site refuses to show details from a backend whose venue name is not Wild and The Sun. `src/venue.json` is only the fallback used when no backend is configured or it cannot be reached.
 
 ### Booking flow

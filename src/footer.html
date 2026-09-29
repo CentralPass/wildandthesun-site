@@ -16,7 +16,9 @@
         <li><a href="/book/">Book a table</a></li>
         <li>
           <a href="{{SQUARE_URL}}" target="_blank" rel="noopener noreferrer"
-            >Order online<span class="sr-only"> (opens Square in a new tab)</span></a
+            >Order online<span class="sr-only">
+              (opens Square in a new tab)</span
+            ></a
           >
         </li>
       </ul>
@@ -25,17 +27,29 @@
       <h2>Find us</h2>
       <address data-venue="address-lines">{{VENUE_ADDRESS_LINES}}</address>
       <ul>
-        <li><a data-venue-tel href="{{VENUE_TEL}}"><span data-venue="phone">{{VENUE_PHONE}}</span></a></li>
+        <li>
+          <a data-venue-tel href="{{VENUE_TEL}}"
+            ><span data-venue="phone">{{VENUE_PHONE}}</span></a
+          >
+        </li>
         <li data-venue-email-item {{VENUE_EMAIL_HIDDEN}}>
-          <a data-venue-mailto href="{{VENUE_MAILTO}}"><span data-venue="email">{{VENUE_EMAIL}}</span></a>
+          <a data-venue-mailto href="{{VENUE_MAILTO}}"
+            ><span data-venue="email">{{VENUE_EMAIL}}</span></a
+          >
         </li>
         <li>
-          <a data-venue-directions href="{{VENUE_DIRECTIONS}}" target="_blank" rel="noopener noreferrer"
+          <a
+            data-venue-directions
+            href="{{VENUE_DIRECTIONS}}"
+            target="_blank"
+            rel="noopener noreferrer"
             >Get directions</a
           >
         </li>
         <li>
-          <a href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener noreferrer"
+            >Instagram</a
+          >
         </li>
       </ul>
     </div>
@@ -48,13 +62,37 @@
   </div>
   <div class="wrap footer-bottom">
     <span
-      >© <span data-year>2026</span> <span data-venue="name">{{VENUE_NAME}}</span
-      ><span data-venue-abn {{VENUE_ABN_HIDDEN}}> · ABN <span data-venue="abn">{{VENUE_ABN}}</span></span></span
+      >© <span data-year>2026</span>
+      <span data-venue="name">{{VENUE_NAME}}</span
+      ><span data-venue-abn {{VENUE_ABN_HIDDEN}}>
+        · ABN <span data-venue="abn">{{VENUE_ABN}}</span></span
+      ></span
     >
     <span class="footer-end"
-      ><a href="/privacy/">Privacy</a> Made for the good days.
-      <button class="motion-toggle motion-toggle-footer" type="button" aria-pressed="false" data-motion-toggle>
-        <span class="motion-icon" aria-hidden="true"></span><span data-motion-label>Pause motion</span>
+      ><a href="/privacy/">Privacy</a>
+      <a
+        class="centralpass-credit centralpass-credit-footer"
+        href="https://www.centralpass.au/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Website by Central Pass, opens in a new tab"
+        ><span>Website by</span
+        ><img
+          src="/assets/brand/centralpass-mark.svg"
+          alt=""
+          width="28"
+          height="31"
+          loading="lazy"
+        /><strong>Central Pass</strong></a
+      >
+      <button
+        class="motion-toggle motion-toggle-footer"
+        type="button"
+        aria-pressed="false"
+        data-motion-toggle
+      >
+        <span class="motion-icon" aria-hidden="true"></span
+        ><span data-motion-label>Pause motion</span>
       </button></span
     >
   </div>
