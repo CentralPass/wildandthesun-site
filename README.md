@@ -73,7 +73,7 @@ Run `node build.mjs`, then serve this folder with `python -m http.server 4173`. 
 
 To test against a local CentralPass backend, run it on port 3000 with `CORS_ORIGIN=http://localhost:4173` and build with `CENTRALPASS_API_BASE=http://localhost:3000`. Rebuild without it before committing so `config.js` does not point at your machine.
 
-Photos in `assets/client` have 560, 800 and full-width WebP versions. The build serves them automatically with the original as a fallback; generate the same three sizes for any new photo. Personal photos are not used in the public templates.
+Photos in `assets/client` have 560, 800 and full-width WebP versions. The build serves them automatically with the original as a fallback; generate the same three sizes for any new photo. Event photography and video live in `assets/events`. Personal photos are not used in the public templates.
 
 ## Deployment
 
@@ -84,7 +84,6 @@ Both stay `noindex` until launch. Security headers come from the generated `_hea
 
 ## Before search launch
 
-- Replace `assets/menu-preview.svg` with the café's approved menu image, keeping the full-size link and useful alt text.
 - Set `PUBLIC_SITE_ORIGIN` to the final custom HTTPS domain if there is one, then deploy with `pwsh -File .\deploy-live.ps1 -Indexable`.
 - Keep `src/menu-highlights.json` in step with the Square menu so the text menu, structured data and `llms.txt` stay accurate.
 - Connect and test the venue's CentralPass backend as above, and review the venue details and hours in the admin with the owner.

@@ -227,8 +227,7 @@ const faqs = [
 
 const faqHtml = faqs.map((item, index) => '<details class="faq-item"' + (index === 0 ? ' open' : '') + '><summary><h3>' + escapeHtml(item.q) + '</h3><span class="faq-icon" aria-hidden="true"></span></summary><div class="faq-answer"><p>' + escapeHtml(item.a) + '</p></div></details>').join('\n');
 
-const toneFor = { acai: 'tone-acai', coffee: 'tone-mint', sweet: 'tone-blush', savoury: 'tone-sun', cold: 'tone-mint' };
-const menuHtml = menu.sections.map((section) => '<section class="menu-section ' + (toneFor[section.id] || 'tone-blush') + '" aria-labelledby="menu-' + section.id + '" data-reveal><h3 id="menu-' + section.id + '">' + escapeHtml(section.name) + '</h3><p>' + escapeHtml(section.description) + '</p><ul role="list">' + section.items.map((item) => '<li><strong>' + escapeHtml(item.name) + '</strong><span>' + escapeHtml(item.description) + '</span></li>').join('') + '</ul></section>').join('\n');
+const menuHtml = menu.sections.map((section) => '<section class="menu-section" aria-labelledby="menu-' + section.id + '" data-reveal><h3 id="menu-' + section.id + '">' + escapeHtml(section.name) + '</h3><p>' + escapeHtml(section.description) + '</p><ul role="list">' + section.items.map((item) => '<li><strong>' + escapeHtml(item.name) + '</strong><span>' + escapeHtml(item.description) + '</span></li>').join('') + '</ul></section>').join('\n');
 
 // ---------- Structured data: one linked graph per page ----------
 
@@ -404,9 +403,6 @@ for (const page of pages) {
   if (html.includes('{{')) throw new Error('Unresolved template marker in ' + page.key + ': ' + html.match(/\{\{[A-Z_]+\}\}/)?.[0]);
   if ((html.match(/<h1\b/g) || []).length !== 1) throw new Error('Expected one H1 in ' + page.key);
   if (hardCodedVenue.test(body)) throw new Error('Hard-coded venue details in src/pages/' + page.key + '.html. Use the {{VENUE_*}} markers.');
-  if (page.key === 'menu' && (!html.includes('menu-preview.svg') || /MENU PREVIEW · COMING SOON|Menu selection coming soon/.test(html))) {
-    throw new Error('Menu image is missing or the old placeholder returned.');
-  }
   const destination = page.slug ? join(page.slug, 'index.html') : 'index.html';
   if (page.slug) await mkdir(page.slug, { recursive: true });
   await writeFile(destination, html, 'utf8');
@@ -421,7 +417,7 @@ for (const redirect of redirects) {
 
 await writeFile('config.js', configJs, 'utf8');
 
-for (const asset of ['assets/menu-preview.svg', 'assets/brand/centralpass-mark.svg', 'assets/brand/logo-wordmark.webp', 'assets/brand/logo-mark.webp', 'assets/fonts/fraunces-normal-latin.woff2', 'assets/fonts/fraunces-italic-latin.woff2', 'assets/fonts/dm-sans-normal-latin.woff2', 'assets/fonts/OFL-fraunces.txt', 'assets/fonts/OFL-dmsans.txt', 'assets/brand/favicon-64.png', 'assets/brand/official-logo-full.jpg', ...pages.map((page) => page.ogImage.slice(1)), 'config.js', 'venue.js', 'site.js', 'booking.js', 'design.css', ...(bookingDemo ? ['booking-demo.js'] : [])]) {
+for (const asset of ['assets/brand/centralpass-mark.svg', 'assets/brand/logo-wordmark.webp', 'assets/brand/logo-mark.webp', 'assets/brand/official-logo-banner.jpg', 'assets/brand/official-logo-transparent.png', 'assets/events/cafe-event-crowd.jpg', 'assets/events/catering-table.jpg', 'assets/events/pink-event-drinks.jpg', 'assets/events/chocolate-desserts.jpg', 'assets/events/event-at-cafe-web.m4v', 'assets/fonts/fraunces-normal-latin.woff2', 'assets/fonts/fraunces-italic-latin.woff2', 'assets/fonts/dm-sans-normal-latin.woff2', 'assets/fonts/OFL-fraunces.txt', 'assets/fonts/OFL-dmsans.txt', 'assets/brand/favicon-64.png', 'assets/brand/official-logo-full.jpg', ...pages.map((page) => page.ogImage.slice(1)), 'config.js', 'venue.js', 'site.js', 'booking.js', 'design.css', ...(bookingDemo ? ['booking-demo.js'] : [])]) {
   await access(asset);
 }
 
