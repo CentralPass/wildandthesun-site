@@ -2,15 +2,16 @@
   <div class="sunlight" aria-hidden="true"><span></span><span></span><span></span></div>
   <div class="wrap page-hero-grid">
     <div class="page-hero-copy">
+      <p class="eyebrow">Visit · celebrate · gather</p>
       <p class="display-title split-title">
-        <span class="line"><span>Find your</span></span>
-        <span class="line"><span><em>sunny spot.</em></span></span>
+        <span class="line"><span>Your place for</span></span>
+        <span class="line"><span><em>something special.</em></span></span>
       </p>
       <h1 id="visit-title" class="page-h1">
-        Visit our family-run açaí café inside Aberfoyle Hub Shopping Centre,
-        near Woolworths in Aberfoyle Park.
+        Visit our café, plan a birthday, arrange catering or bring people
+        together at Aberfoyle Hub in Aberfoyle Park.
       </h1>
-      <p class="lede">Come for a bowl, stay for a while, and bring your people.</p>
+      <p class="lede">Come in and see us, or send a message with the occasion you have in mind.</p>
       <dl class="quick-facts">
         <div>
           <dt>Today</dt>
@@ -21,57 +22,47 @@
           <dd data-venue="address">{{VENUE_ADDRESS}}</dd>
         </div>
         <div>
-          <dt>Phone</dt>
-          <dd><a data-venue-tel href="{{VENUE_TEL}}"><span data-venue="phone">{{VENUE_PHONE}}</span></a></dd>
+          <dt>Enquiries</dt>
+          <dd><a href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener noreferrer">Message us on Instagram</a></dd>
         </div>
       </dl>
       <div class="actions">
         <a class="btn btn-primary" data-venue-directions href="{{VENUE_DIRECTIONS}}" target="_blank" rel="noopener noreferrer"
           >Get directions <span aria-hidden="true">↗</span
           ><span class="sr-only"> (opens Google Maps in a new tab)</span></a
-        ><a class="btn btn-outline" href="/book/">Book a table</a>
+        ><a class="btn btn-outline" href="#events">Events &amp; catering</a>
       </div>
     </div>
-    <div class="page-hero-art" data-parallax>
-      <div class="sun sun-small" aria-hidden="true">
-        <svg viewBox="-200 -200 400 400" focusable="false">
-          <g class="sun-rays">
-            <path d="M-7-126 0-198 7-126Z" /><path d="M-7-126 0-198 7-126Z" transform="rotate(30)" /><path d="M-7-126 0-198 7-126Z" transform="rotate(60)" /><path d="M-7-126 0-198 7-126Z" transform="rotate(90)" /><path d="M-7-126 0-198 7-126Z" transform="rotate(120)" /><path d="M-7-126 0-198 7-126Z" transform="rotate(150)" /><path d="M-7-126 0-198 7-126Z" transform="rotate(180)" /><path d="M-7-126 0-198 7-126Z" transform="rotate(210)" /><path d="M-7-126 0-198 7-126Z" transform="rotate(240)" /><path d="M-7-126 0-198 7-126Z" transform="rotate(270)" /><path d="M-7-126 0-198 7-126Z" transform="rotate(300)" /><path d="M-7-126 0-198 7-126Z" transform="rotate(330)" />
-          </g>
-          <circle r="112" />
-        </svg>
-      </div>
-      <figure class="arch page-arch">
-        <img data-sizes="(max-width: 900px) 70vw, 32vw"
-          src="/assets/graphic/family-instagram.webp"
-          alt="The family behind Wild and The Sun outside their mint green café at Aberfoyle Hub"
-          width="1100"
-          height="1310"
-          fetchpriority="high"
-        />
-      </figure>
+    <div class="visit-hero-panel" data-reveal>
+      <p>Plan with us</p>
+      <ul role="list">
+        <li>Birthdays</li>
+        <li>Catering</li>
+        <li>Group tables</li>
+        <li>Special occasions</li>
+      </ul>
+      <a class="text-link" href="#events">See what we can arrange</a>
     </div>
   </div>
 </section>
 
 <nav class="jump-links" aria-label="On this page">
   <div class="wrap">
-    <a href="#story">Our story</a><a href="#gather">Groups &amp; occasions</a><a href="#find">Hours &amp; location</a>
+    <a href="#events">Events &amp; catering</a><a href="#story">The café</a><a href="#find">Hours &amp; location</a>
   </div>
 </nav>
 
 <section class="story-block tone-dark" id="story" aria-labelledby="story-heading">
   <div class="wrap story-block-grid">
     <div class="story-block-copy" data-reveal>
-      <h2 id="story-heading">Made with heart. <em>Shared with you.</em></h2>
+      <h2 id="story-heading">A café for <em>everyday moments.</em></h2>
       <p>
         Wild and The Sun is a neighbourhood café built around the simple
         pleasure of getting together over something good.
       </p>
       <p>
-        From a quick morning coffee to an afternoon açaí catch-up, we love
-        being part of the everyday moments in Aberfoyle Park. Our little café is
-        a place for familiar faces and new friends alike.
+        From a quick morning coffee to an afternoon açaí catch-up, the café is
+        a calm, welcoming place for everyday visits and occasions worth planning.
       </p>
     </div>
     <div class="story-stack">
@@ -87,16 +78,22 @@
   </div>
 </section>
 
-<section class="gather-block" id="gather" aria-labelledby="gather-heading">
+<section class="gather-block" id="events" aria-labelledby="gather-heading">
   <div class="wrap gather-grid">
     <div class="gather-copy" data-reveal>
+      <p class="eyebrow">Events &amp; catering</p>
       <h2 id="gather-heading">Bring your <em>people together.</em></h2>
       <p>
-        Thinking about a birthday catch-up, a group visit or another occasion?
-        Talk with the team about what the café can arrange.
+        Planning a birthday, catered meeting, group visit or special occasion?
+        We would love to hear the idea and work through what the café can arrange.
       </p>
+      <ul class="event-types" role="list">
+        <li><strong>Birthday tables</strong><span>Casual celebrations over breakfast, lunch, sweets and drinks.</span></li>
+        <li><strong>Catering</strong><span>Café food and drinks prepared for meetings and gatherings.</span></li>
+        <li><strong>Special occasions</strong><span>Thoughtful food, a welcoming table and room for your own ideas.</span></li>
+      </ul>
       <ol class="steps" role="list">
-        <li><strong>Call us during café hours.</strong> We are happy to talk it through.</li>
+        <li><strong>Send us a message or email.</strong> You are also welcome to visit the café and speak with us.</li>
         <li><strong>Share the details.</strong> Your preferred date, rough guest numbers and what you are planning.</li>
         <li><strong>We confirm with you.</strong> Availability, food and drink options, and any pricing or space needs.</li>
       </ol>
@@ -105,14 +102,14 @@
         until the team has checked the details.
       </p>
       <div class="actions">
-        <a class="btn btn-primary" data-venue-tel href="{{VENUE_TEL}}"
-          ><span>Call <span data-venue="phone">{{VENUE_PHONE}}</span></span></a
-        ><a class="text-link" href="/book/">Smaller group? Book online</a>
+        <a class="btn btn-primary" href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener noreferrer">Message us on Instagram <span aria-hidden="true">↗</span></a>
+        <a class="btn btn-outline" data-venue-email-item {{VENUE_EMAIL_HIDDEN}} data-venue-mailto href="{{VENUE_MAILTO}}">Email us</a>
+        <a class="text-link" data-venue-directions href="{{VENUE_DIRECTIONS}}" target="_blank" rel="noopener noreferrer">Visit us in person</a>
       </div>
     </div>
     <div class="gather-art" data-reveal="image">
       <figure class="arch gather-arch">
-        <img src="/assets/client/chocolate-acai-cups.jpg" alt="Three chocolate açaí cups ready to share" width="1122" height="1402" loading="lazy" />
+        <img src="/assets/client/gourmet-sando.jpg" alt="Freshly toasted gourmet sandwiches ready to share" width="1122" height="1402" loading="lazy" />
       </figure>
       <figure class="circle-photo gather-circle">
         <img data-sizes="(max-width: 900px) 40vw, 18vw" src="/assets/client/specialty-pair.jpg" alt="Two specialty drinks side by side" width="1122" height="1402" loading="lazy" />
@@ -147,16 +144,17 @@
         <ul class="hours-list" data-hours-list>
           {{HOURS_LIST}}
         </ul>
-        <p class="fine-print">Hours can change on public holidays. Call ahead if you are making a special trip.</p>
+        <p class="fine-print">Hours can change on public holidays. Check Instagram or message us before making a special trip.</p>
       </article>
       <article class="info-card tone-mint" data-reveal>
         <h3>Say hello</h3>
+        <p>Messages and email are best while the café is busy. You are always welcome to come in and speak with us.</p>
         <ul class="contact-list" role="list">
-          <li><span>Call</span><a data-venue-tel href="{{VENUE_TEL}}"><span data-venue="phone">{{VENUE_PHONE}}</span></a></li>
           <li data-venue-email-item {{VENUE_EMAIL_HIDDEN}}><span>Email</span><a data-venue-mailto href="{{VENUE_MAILTO}}"><span data-venue="email">{{VENUE_EMAIL}}</span></a></li>
-          <li><span>Instagram</span><a href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener noreferrer">@wild_and_the_sun_acai_cafe</a></li>
+          <li><span>Message</span><a href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><span>In person</span><a data-venue-directions href="{{VENUE_DIRECTIONS}}" target="_blank" rel="noopener noreferrer">Aberfoyle Hub</a></li>
         </ul>
-        <a class="btn btn-primary" href="/book/">Book a table</a>
+        <a class="btn btn-primary" href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener noreferrer">Send a message</a>
       </article>
     </div>
   </div>

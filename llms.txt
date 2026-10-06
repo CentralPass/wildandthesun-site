@@ -1,6 +1,6 @@
 # Wild and The Sun Açaí Cafe
 
-> Family-run açaí café inside Aberfoyle Hub Shopping Centre, Aberfoyle Park, South Australia, in Adelaide’s southern suburbs. Açaí bowls, smoothies, specialty coffee, pastries and café food. Dine in, order ahead for pickup, get delivery, or book a table.
+> Neighbourhood café inside Aberfoyle Hub Shopping Centre, Aberfoyle Park, South Australia. Açaí bowls, smoothies, specialty coffee and café food, plus birthdays, catering, group tables and special occasions by enquiry.
 
 ## Key facts
 
@@ -10,8 +10,9 @@
 - Phone: 0451 661 351
 - Opening hours: Tuesday to Saturday 9am–5pm and Sunday 9am–2pm, closed Monday. Public holiday hours can vary.
 - Known for: açaí bowls (Classic Açaí Bowl with banana, strawberry, granola and honey; Kids Açaí Bowl), pistachio latte, Dubai chocolate croissant, loaded banana bread, waffles.
-- Type: café, açaí bar and coffee shop. Family run. Dine in and takeaway.
-- Book a table: call 0451 661 351 (see https://wild-and-the-sun.pages.dev/book/)
+- Type: café, açaí bar and coffee shop. Dine in and takeaway.
+- Events and catering: birthdays, group tables, catering and special occasions by enquiry through Instagram or email, or in person at the café.
+- Book a table: message the café on Instagram or visit in person (see https://wild-and-the-sun.pages.dev/book/)
 - Order ahead for pickup: https://wild-and-the-sun.square.site/s/order#most-popular
 - Delivery: Uber Eats, https://www.ubereats.com/au/store/wild-and-the-sun-acai-cafe-aberfoyle-park/57cwlGKJVz2NsWWez7BPSQ
 - Instagram: https://www.instagram.com/wild_and_the_sun_acai_cafe/
@@ -88,11 +89,15 @@ No, it’s a full café. As well as açaí bowls and smoothies, there’s espres
 
 ### What are the opening hours?
 
-We’re open Tuesday to Saturday 9am–5pm and Sunday 9am–2pm, closed Monday. Hours can change on public holidays, so call 0451 661 351 if you’re making a special trip.
+We’re open Tuesday to Saturday 9am–5pm and Sunday 9am–2pm, closed Monday. Hours can change on public holidays; check Instagram or message us before making a special trip.
 
 ### Can I book a table?
 
-Yes. Call 0451 661 351 during opening hours and we’ll save you a table. For birthdays and bigger groups, call us to plan it together.
+Yes. Message us on Instagram or email the café with your preferred day, time and group size. You are also welcome to visit us in person.
+
+### Do you host birthdays, events or catering?
+
+Yes. Wild and The Sun welcomes birthday gatherings, special occasions, group tables and catering enquiries. Message us on Instagram or email the café with your date, guest numbers and ideas.
 
 ### Do you do takeaway or delivery?
 
@@ -104,8 +109,8 @@ There’s a Kids Açaí Bowl and babyccinos for little ones, a veggie quesadilla
 
 ## Pages
 
-- [Home](https://wild-and-the-sun.pages.dev/): Family-run açaí café at Aberfoyle Hub, Aberfoyle Park SA. Acai bowls, specialty coffee, Dubai chocolate croissants and waffles. Book a table or order ahead.
+- [Home](https://wild-and-the-sun.pages.dev/): Açaí, specialty coffee, café food, birthdays, catering and special occasions at Aberfoyle Hub. Visit, book a table or plan an event.
 - [Menu](https://wild-and-the-sun.pages.dev/menu/): Our café menu in Aberfoyle Park: classic and kids açaí bowls, pistachio and matcha lattes, Dubai chocolate croissants, waffles, quesadillas and smoothies.
-- [Visit us](https://wild-and-the-sun.pages.dev/visit/): Find Wild and The Sun inside Aberfoyle Hub Shopping Centre near Woolworths, Aberfoyle Park SA: opening hours, directions, our story and group catch-ups.
-- [Book a table](https://wild-and-the-sun.pages.dev/book/): Book a table at Wild and The Sun, the family-run açaí café at Aberfoyle Hub, Aberfoyle Park. Call the café and we’ll save you a seat.
+- [Visit us](https://wild-and-the-sun.pages.dev/visit/): Plan birthdays, catering, group tables and special occasions at Wild and The Sun, or find opening hours and directions to our Aberfoyle Park café.
+- [Book a table](https://wild-and-the-sun.pages.dev/book/): Book a table at Wild and The Sun at Aberfoyle Hub, Aberfoyle Park. Message the café to arrange your visit.
 - [Privacy](https://wild-and-the-sun.pages.dev/privacy/): How Wild and The Sun handles your personal information when you visit the website, book a table, pay a deposit or order online.

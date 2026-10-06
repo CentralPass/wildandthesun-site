@@ -14,7 +14,7 @@
         Book a table at Wild and The Sun, Aberfoyle Park.
       </h1>
       <p class="lede" data-booking-intro>
-        Give us a call during café hours and we will save you a seat.
+        Send us a message with your preferred day, time and group size.
       </p>
       <ul class="book-notes" role="list">
         <li>
@@ -27,8 +27,8 @@
           <div>
             <strong>Coming as a group?</strong
             ><span
-              >Birthdays and bigger catch-ups start with a chat.
-              <a href="/visit/#gather">Groups &amp; occasions</a></span
+              >Birthdays, catering and bigger occasions are planned with you.
+              <a href="/visit/#events">Events &amp; catering</a></span
             >
           </div>
         </li>
@@ -44,10 +44,8 @@
           <div>
             <strong>Need to change a booking?</strong
             ><span
-              >Use your private booking link, or call
-              <a data-venue-tel href="{{VENUE_TEL}}"
-                ><span data-venue="phone">{{VENUE_PHONE}}</span></a
-              >.</span
+              >Use your private booking link, or
+              <a href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener noreferrer">message us on Instagram</a>.</span
             >
           </div>
         </li>
@@ -56,16 +54,15 @@
     <div class="booking-column">
       <div class="booking-card{{BOOKING_CARD_CLASS}}" id="booking-root">
         <div class="booking-fallback">
-          <h2>Call us and we’ll save you a seat.</h2>
+          <h2>Send us your booking details.</h2>
           <p>
-            Tell us the day, time and how many are coming. We look forward to
-            seeing you.
+            Message us with the day, time and how many are coming, email us if
+            the address is shown below, or come in and see us at the café.
           </p>
-          <a class="btn btn-primary" data-venue-tel href="{{VENUE_TEL}}"
-            ><span
-              >Call <span data-venue="phone">{{VENUE_PHONE}}</span></span
-            ></a
-          >
+          <div class="actions">
+            <a class="btn btn-primary" href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener noreferrer">Message us on Instagram</a>
+            <a class="btn btn-outline" data-venue-email-item {{VENUE_EMAIL_HIDDEN}} data-venue-mailto href="{{VENUE_MAILTO}}">Email us</a>
+          </div>
         </div>
       </div>
       <p class="booking-credit">

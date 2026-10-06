@@ -6,7 +6,7 @@
 // straight to Stripe Checkout via POST /api/booking-portal/checkout, using the
 // private manage token returned only to them. Payment is confirmed by Stripe
 // webhooks on the backend, never by this page. Without CENTRALPASS_API_BASE, or
-// if anything is unavailable, the page offers a phone booking instead.
+// if anything is unavailable, the page offers message/email contact instead.
 (() => {
   'use strict';
 
@@ -62,21 +62,30 @@
   }
 
   const venue = () => window.WildSun?.venue || null;
-  const phoneLabel = () => venue()?.phone || 'the café';
-  const phoneHref = () => venue()?.tel || '';
+  const instagramUrl = 'https://www.instagram.com/wild_and_the_sun_acai_cafe/';
+  const contactLabel = () => venue()?.email ? 'Email us' : 'Message us on Instagram';
+  const contactHref = () => venue()?.email
+    ? 'mailto:' + venue().email + '?subject=' + encodeURIComponent('Wild and The Sun booking enquiry')
+    : instagramUrl;
 
-  function phoneLink(className = '') {
-    const link = h('a', { class: className, 'data-booking-phone': true, href: phoneHref() || null }, phoneLabel());
-    return link;
+  function contactLink(className = '') {
+    return h('a', {
+      class: className,
+      'data-booking-contact': true,
+      href: contactHref(),
+      ...(venue()?.email ? {} : { target: '_blank', rel: 'noopener noreferrer' }),
+    }, contactLabel());
   }
 
-  function syncPhones() {
-    root.querySelectorAll('[data-booking-phone]').forEach((link) => {
-      if (phoneHref()) link.href = phoneHref();
-      link.textContent = link.dataset.prefix ? link.dataset.prefix + phoneLabel() : phoneLabel();
+  function syncContacts() {
+    root.querySelectorAll('[data-booking-contact]').forEach((link) => {
+      link.href = contactHref();
+      link.textContent = contactLabel();
+      if (venue()?.email) { link.removeAttribute('target'); link.removeAttribute('rel'); }
+      else { link.target = '_blank'; link.rel = 'noopener noreferrer'; }
     });
   }
-  window.WildSun?.onVenueChange(() => { syncPhones(); if (state.form) renderDates(); });
+  window.WildSun?.onVenueChange(() => { syncContacts(); if (state.form) renderDates(); });
 
   function uuid() {
     if (crypto.randomUUID) return crypto.randomUUID();
@@ -164,7 +173,7 @@
     const payload = await response.json().catch(() => ({}));
     if (!response.ok) {
       const fallback = response.status === 429 ? 'Lots of people are booking right now. Please wait a moment and try again.'
-        : response.status >= 500 ? 'The booking system had a problem. Please try again, or call us.'
+        : response.status >= 500 ? 'The booking system had a problem. Please try again, or message us.'
           : 'That did not work. Please try again.';
       throw Object.assign(new Error(payload.error || fallback), { status: response.status, code: payload.code });
     }
@@ -208,13 +217,12 @@
   function showFallback(message) {
     state.form = null;
     root.classList.remove('is-live');
-    const call = phoneLink('btn btn-primary');
-    call.dataset.prefix = 'Call ';
-    call.textContent = 'Call ' + phoneLabel();
+    const contact = contactLink('btn btn-primary');
     root.replaceChildren(h('div', { class: 'booking-fallback' },
-      h('h2', { text: 'Call us and we’ll save you a seat.' }),
+      h('h2', { text: 'Send us your booking details.' }),
       h('p', { text: message }),
-      call,
+      contact,
+      h('a', { class: 'text-link', href: '/visit/#find', text: 'Or come in and see us' }),
     ));
   }
 
@@ -360,8 +368,7 @@
     f.more.disabled = state.party >= state.maxParty;
     f.partyHint.replaceChildren();
     if (state.party >= state.maxParty) {
-      const call = phoneLink();
-      f.partyHint.append('More than ' + state.maxParty + '? Call us on ', call, '.');
+      f.partyHint.append('More than ' + state.maxParty + '? ', contactLink(), ' about a group or occasion.');
     }
     updateDeposit();
   }
@@ -440,7 +447,7 @@
         renderTimes(result);
       } catch (cause) {
         if (controller.signal.aborted) return;
-        if (cause.status === 402) { showFallback('Online bookings are not available right now. Please call us to book.'); return; }
+        if (cause.status === 402) { showFallback('Online bookings are not available right now. Please message or email us to book.'); return; }
         f.times.replaceChildren();
         f.timeStatus.textContent = cause.status === 400 ? cause.message
           : cause.status === 429 ? 'Lots of people are checking tables right now. '
@@ -525,10 +532,10 @@
     f.submit.textContent = deposit ? 'Hold table & pay ' + money(deposit.cents) + ' deposit' : state.config.auto_confirm ? 'Confirm booking' : 'Request this table';
   }
 
-  function showError(message, withPhone = false) {
+  function showError(message, withContact = false) {
     const f = state.form;
     f.error.replaceChildren(message);
-    if (withPhone) f.error.append(' Call us on ', phoneLink(), '.');
+    if (withContact) f.error.append(' ', contactLink(), '.');
     f.error.hidden = false;
   }
 
@@ -615,10 +622,10 @@
         showError(cause.message, true);
         return;
       case 'NOT_NATIVE':
-        showFallback('Online bookings are paused right now. Please call us to book.');
+        showFallback('Online bookings are paused right now. Please message or email us to book.');
         return;
       default:
-        if (cause.status === 402) { showFallback('Online bookings are not available right now. Please call us to book.'); return; }
+        if (cause.status === 402) { showFallback('Online bookings are not available right now. Please message or email us to book.'); return; }
         if (cause.status === 409) {
           availabilityCache.clear();
           showError(cause.message + ' Please choose another time. Your details are kept.');
@@ -697,7 +704,7 @@
       h('p', { text: 'Pay the ' + money(pending.cents) + ' deposit to confirm it. Unpaid tables are released when the payment window closes.' }),
       problem ? h('p', { class: 'booking-error', role: 'alert', text: problem }) : null,
       bookingFacts(pending), actions,
-      h('p', { class: 'fine-print' }, 'Keep your booking page link. It is private to you. Questions? Call ', phoneLink(), '.'),
+      h('p', { class: 'fine-print' }, 'Keep your booking page link. It is private to you. Questions? ', contactLink(), '.'),
       restart));
     root.querySelector('h2').focus({ preventScroll: true });
   }
@@ -776,7 +783,7 @@
       state.config?.demo ? h('p', { class: 'demo-note', text: 'Preview only: no booking was made and nothing was charged.' }) : null,
       bookingFacts(view),
       actions,
-      h('p', { class: 'fine-print' }, view.manageUrl ? 'Your booking link is private. Anyone with it can view or cancel this booking. Need help? Call ' : 'To change or cancel, call us on ', phoneLink(), '.'),
+      h('p', { class: 'fine-print' }, view.manageUrl ? 'Your booking link is private. Anyone with it can view or cancel this booking. Need help? ' : 'To change or cancel, ', contactLink(), '.'),
       again));
     root.querySelector('h2').focus({ preventScroll: true });
     scrollToElement(root);
@@ -809,23 +816,23 @@
   // ---------- start ----------
 
   async function init() {
-    if (!base && !demo) return; // The phone-booking card in the page stays.
+    if (!base && !demo) return; // The message/email booking card in the page stays.
     root.classList.add('is-live');
     showSkeleton();
     let config;
     try {
       config = await api('/api/bookings/config');
     } catch (cause) {
-      showFallback(cause.status === 402 ? 'Online bookings are not available right now. Please call us to book.' : 'We can’t load live availability right now. Please call us to book.');
+      showFallback(cause.status === 402 ? 'Online bookings are not available right now. Please message or email us to book.' : 'We can’t load live availability right now. Please message or email us to book.');
       return;
     }
     // Never take bookings for another venue if the site is misconfigured.
     if (!/wild.*sun/.test(String(config.venue?.name || '').toLowerCase().replace(/&/g, 'and'))) {
-      showFallback('Online bookings aren’t ready yet. Please call us to book.');
+      showFallback('Online bookings aren’t ready yet. Please message or email us to book.');
       return;
     }
     if (config.provider !== 'native' || config.enabled !== true) {
-      showFallback('Online bookings are paused right now. Please call us to book.');
+      showFallback('Online bookings are paused right now. Please message or email us to book.');
       return;
     }
     state.config = config;

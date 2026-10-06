@@ -12,13 +12,13 @@ The site connects to Wild and The Sun's own CentralPass backend for three things
 | Opening hours, today's open/closed status, special days | `GET /api/settings/hours` | Admin → Hours (the **Hours** feature) |
 | Table bookings and Stripe booking deposits | `/api/bookings/*`, `/api/booking-portal/checkout` | Admin → Settings → Bookings, staff diary |
 
-The footer credits Central Pass for the website. The booking page credits the booking experience, with wording that changes between the phone fallback, sample preview and connected online bookings.
+The footer credits Central Pass for the website. The booking page credits the booking experience, with wording that changes between the message/email fallback, sample preview and connected online bookings.
 
 Details are read at build time, so the HTML, footer and search data already carry them, and read again in the browser by `venue.js`, so an edit in the admin shows on the site straight away without a rebuild. A blank email or ABN in the admin hides that line. The site refuses to show details from a backend whose venue name is not Wild and The Sun. `src/venue.json` is only the fallback used when no backend is configured or it cannot be reached.
 
 ### Booking flow
 
-`booking.js` loads the booking settings, shows live availability for the actual party size, and creates the booking with a retry-safe `request_id`. When the venue's deposit rules apply, the guest accepts the displayed policy, the table is held as pending, and they go straight to Stripe Checkout. Payment is confirmed by Stripe webhooks on the backend, never by this page. Stripe returns the guest to their private CentralPass booking page. If they come back to the site without paying, the held table is recovered from the session and they can pay or open their booking page. When the backend is unset, bookings are switched off, or anything fails, the page offers a phone booking using the admin phone number.
+`booking.js` loads the booking settings, shows live availability for the actual party size, and creates the booking with a retry-safe `request_id`. When the venue's deposit rules apply, the guest accepts the displayed policy, the table is held as pending, and they go straight to Stripe Checkout. Payment is confirmed by Stripe webhooks on the backend, never by this page. Stripe returns the guest to their private CentralPass booking page. If they come back to the site without paying, the held table is recovered from the session and they can pay or open their booking page. When the backend is unset, bookings are switched off, or anything fails, the page directs guests to email or Instagram messaging, with an in-person option.
 
 ## Connecting the backend
 
@@ -73,7 +73,7 @@ Run `node build.mjs`, then serve this folder with `python -m http.server 4173`. 
 
 To test against a local CentralPass backend, run it on port 3000 with `CORS_ORIGIN=http://localhost:4173` and build with `CENTRALPASS_API_BASE=http://localhost:3000`. Rebuild without it before committing so `config.js` does not point at your machine.
 
-Photos in `assets/client` and `assets/graphic/family-instagram.webp` have 560, 800 and full-width WebP versions. The build serves them automatically with the original as a fallback; generate the same three sizes for any new photo.
+Photos in `assets/client` have 560, 800 and full-width WebP versions. The build serves them automatically with the original as a fallback; generate the same three sizes for any new photo. Personal photos are not used in the public templates.
 
 ## Deployment
 
