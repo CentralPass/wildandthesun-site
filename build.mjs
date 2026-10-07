@@ -397,7 +397,7 @@ for (const redirect of redirects) {
 
 await writeFile('config.js', configJs, 'utf8');
 
-for (const asset of ['assets/brand/centralpass-mark.svg', 'assets/brand/logo-wordmark.webp', 'assets/brand/logo-mark.webp', 'assets/brand/official-logo-banner.jpg', 'assets/brand/official-logo-transparent.png', 'assets/events/catering-table.jpg', 'assets/events/pink-event-drinks.jpg', 'assets/events/chocolate-desserts.jpg', 'assets/brand/favicon-64.png', 'assets/brand/official-logo-full.jpg', ...pages.map((page) => page.ogImage.slice(1)), 'config.js', 'venue.js', 'site.js', 'booking.js', 'design.css', ...(bookingDemo ? ['booking-demo.js'] : [])]) {
+for (const asset of ['assets/brand/centralpass-mark.svg', 'assets/brand/logo-wordmark.webp', 'assets/brand/logo-mark.webp', 'assets/brand/official-logo-transparent.png', 'assets/events/catering-table-v2.jpg', 'assets/events/pink-event-drinks-v2.jpg', 'assets/events/chocolate-desserts-v2.jpg', 'assets/menu/gourmet-sando-v2.jpg', 'assets/menu/specialty-pair-v2.jpg', 'assets/brand/favicon-64.png', 'assets/brand/official-logo-full.jpg', ...pages.map((page) => page.ogImage.slice(1)), 'config.js', 'venue.js', 'site.js', 'booking.js', 'design.css', ...(bookingDemo ? ['booking-demo.js'] : [])]) {
   await access(asset);
 }
 
@@ -446,9 +446,9 @@ await writeFile('robots.txt', indexable
 
 // Image sitemap entries help photo search and AI answers show the right pictures.
 const sitemapImages = {
-  home: ['/assets/client/gourmet-sando-1122.webp', '/assets/client/smoothie-trio-1122.webp', '/assets/client/latte-1122.webp', '/assets/events/chocolate-desserts.jpg'],
-  menu: ['/assets/menu/menu-preview.svg'],
-  visit: ['/assets/events/catering-table.jpg'],
+  home: ['/assets/client/gourmet-sando-1122.webp', '/assets/client/smoothie-trio-1122.webp', '/assets/client/latte-1122.webp', '/assets/events/chocolate-desserts-v2.jpg'],
+  menu: ['/assets/menu/gourmet-sando-v2.jpg', '/assets/menu/specialty-pair-v2.jpg'],
+  visit: ['/assets/events/catering-table-v2.jpg'],
   book: ['/assets/client/acai-trio-1122.webp'],
 };
 const urls = pages.map((page) => {
