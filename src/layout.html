@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#163307" />
+    <meta name="theme-color" content="#1b360b" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>{{TITLE}}</title>
     <meta name="description" content="{{DESCRIPTION}}" />
@@ -30,9 +30,6 @@
     <link rel="icon" href="/assets/brand/favicon-64.png" type="image/png" />
     <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png" />
     {{PRELOAD}}
-    <link rel="preload" href="/assets/fonts/fraunces-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/assets/fonts/fraunces-italic-latin.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/assets/fonts/dm-sans-normal-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/design.css?v={{VERSION}}" />
     <script>document.documentElement.classList.add('js');</script>
     <script type="application/json" id="venue-data">{{VENUE_JSON}}</script>
@@ -73,9 +70,20 @@
     </header>
     <main id="main">{{BODY}}</main>
     {{FOOTER}}
-    <div class="mobile-dock" id="mobile-dock">
-      <a class="btn btn-primary" href="/visit/#events">Plan an event</a
-      ><a class="btn btn-light" href="/book/">Book a table</a>
-    </div>
+    <dialog class="occasion-dialog" id="occasion-dialog" aria-labelledby="occasion-dialog-title">
+      <button class="occasion-dialog-close" type="button" data-dialog-close aria-label="Close event invitation">×</button>
+      <div class="occasion-dialog-grid">
+        <div class="occasion-dialog-media"><img src="/assets/events/pink-event-drinks.jpg" alt="Pink citrus and mint drinks prepared for a celebration" width="576" height="1024" decoding="async" /></div>
+        <div class="occasion-dialog-copy">
+          <p class="eyebrow">At Wild and The Sun</p>
+          <h2 id="occasion-dialog-title">Planning something special?</h2>
+          <p>Birthdays, catering and celebrations at our Aberfoyle Park café.</p>
+          <div class="occasion-dialog-actions">
+            <a class="btn btn-primary" href="/visit/#events">Explore events</a>
+            <a class="text-link" href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener noreferrer">Message us <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </div>
+    </dialog>
   </body>
 </html>

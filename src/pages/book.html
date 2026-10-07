@@ -1,21 +1,26 @@
 <section class="book-page" id="top" aria-labelledby="book-title" data-hero>
-  <div class="sunlight" aria-hidden="true">
-    <span></span><span></span><span></span>
-  </div>
   <div class="wrap book-grid">
     <div class="book-intro">
-      <p class="display-title split-title">
-        <span class="line"><span>Pull up</span></span>
-        <span class="line"
-          ><span><em>a chair.</em></span></span
-        >
-      </p>
-      <h1 id="book-title" class="page-h1">
-        Book a table at Wild and The Sun, Aberfoyle Park.
-      </h1>
-      <p class="lede" data-booking-intro>
-        Send us a message with your preferred day, time and group size.
-      </p>
+      <h1 id="book-title" class="display-title">Book a table.</h1>
+      <p class="lede" data-booking-intro>Tell us your preferred day, time and group size.</p>
+      <figure class="book-photo">
+        <img src="/assets/client/acai-trio.jpg" alt="Three açaí cups ready to share at Wild and The Sun" width="1122" height="1402" data-sizes="(max-width: 900px) 92vw, 40vw" />
+      </figure>
+    </div>
+    <div class="booking-column">
+      <div class="booking-card{{BOOKING_CARD_CLASS}}" id="booking-root">
+        <div class="booking-fallback">
+          <h2>Send us your booking details.</h2>
+          <p>
+            Message us with the day, time and how many are coming. You can also
+            come in and see us at the café.
+          </p>
+          <div class="actions">
+            <a class="btn btn-primary" href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener noreferrer">Message us on Instagram</a>
+            <a class="btn btn-outline" data-venue-email-item {{VENUE_EMAIL_HIDDEN}} data-venue-mailto href="{{VENUE_MAILTO}}">Email us</a>
+          </div>
+        </div>
+      </div>
       <ul class="book-notes" role="list">
         <li>
           <div>
@@ -50,21 +55,6 @@
           </div>
         </li>
       </ul>
-    </div>
-    <div class="booking-column">
-      <div class="booking-card{{BOOKING_CARD_CLASS}}" id="booking-root">
-        <div class="booking-fallback">
-          <h2>Send us your booking details.</h2>
-          <p>
-            Message us with the day, time and how many are coming, email us if
-            the address is shown below, or come in and see us at the café.
-          </p>
-          <div class="actions">
-            <a class="btn btn-primary" href="{{INSTAGRAM_URL}}" target="_blank" rel="noopener noreferrer">Message us on Instagram</a>
-            <a class="btn btn-outline" data-venue-email-item {{VENUE_EMAIL_HIDDEN}} data-venue-mailto href="{{VENUE_MAILTO}}">Email us</a>
-          </div>
-        </div>
-      </div>
       <p class="booking-credit">
         <img
           src="/assets/brand/centralpass-mark.svg"

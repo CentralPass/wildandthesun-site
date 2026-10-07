@@ -2,17 +2,16 @@
   <div class="wrap footer-grid">
     <div class="footer-brand">
       <a class="brand" href="/" aria-label="{{VENUE_NAME}}, home"
-        ><img class="official-logo" src="/assets/brand/official-logo-transparent.png" alt="" width="1200" height="327"
+        ><img class="official-logo" src="/assets/brand/official-logo-banner.jpg" alt="" width="1200" height="327"
       /></a>
-      <p>Açaí, coffee, café food and thoughtful occasions at Aberfoyle Hub.</p>
-      <a class="btn btn-sun" href="/visit/#events">Plan an occasion</a>
+      <address data-venue="address-lines">{{VENUE_ADDRESS_LINES}}</address>
     </div>
     <div class="footer-col">
       <h2>Explore</h2>
       <ul>
         <li><a href="/menu/">Menu</a></li>
         <li><a href="/visit/#events">Events &amp; catering</a></li>
-        <li><a href="/visit/#story">The café</a></li>
+        <li><a href="/visit/">Visit us</a></li>
         <li><a href="/book/">Book a table</a></li>
         <li>
           <a href="{{SQUARE_URL}}" target="_blank" rel="noopener noreferrer"
@@ -24,8 +23,7 @@
       </ul>
     </div>
     <div class="footer-col">
-      <h2>Find us</h2>
-      <address data-venue="address-lines">{{VENUE_ADDRESS_LINES}}</address>
+      <h2>Get in touch</h2>
       <ul>
         <li data-venue-email-item {{VENUE_EMAIL_HIDDEN}}>
           <a data-venue-mailto href="{{VENUE_MAILTO}}"
@@ -46,12 +44,7 @@
             >Message us on Instagram</a
           >
         </li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h2>Opening hours</h2>
-      <ul class="hours-list hours-list-compact" data-hours-list>
-        {{HOURS_LIST}}
+        <li><a href="/visit/#find">Opening hours</a></li>
       </ul>
     </div>
   </div>

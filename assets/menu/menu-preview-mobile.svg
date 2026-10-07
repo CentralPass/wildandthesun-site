@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 1200" role="img" aria-labelledby="title description">
+  <title id="title">Wild and The Sun menu selection</title>
+  <desc id="description">A selection of café food, açaí and drinks. Visit Square for current availability and prices.</desc>
+  <rect width="720" height="1200" fill="#fff0f2"/>
+  <rect x="20" y="20" width="680" height="1160" fill="none" stroke="#1b360b" stroke-width="2"/>
+  <g fill="#1b360b" font-family="Helvetica Neue, Arial, sans-serif">
+    <text x="55" y="72" font-size="20" font-weight="700" letter-spacing="3">WILD AND THE SUN · AÇAÍ CAFÉ</text>
+    <text x="51" y="176" font-size="96" font-weight="500" letter-spacing="-5">Menu</text>
+    <text x="55" y="273" font-size="25" font-weight="700" letter-spacing="3">CAFÉ FOOD</text>
+    <g font-size="31" font-weight="400">
+      <text x="55" y="332">Gourmet sando</text>
+      <text x="55" y="389">Ham, cheese &amp; spinach croissant</text>
+      <text x="55" y="446">Loaded banana bread</text>
+      <text x="55" y="503">Waffles</text>
+      <text x="55" y="560">Flower baklava</text>
+    </g>
+    <text x="55" y="650" font-size="25" font-weight="700" letter-spacing="3">AÇAÍ &amp; DRINKS</text>
+    <g font-size="31" font-weight="400">
+      <text x="55" y="705">Classic açaí bowl</text>
+      <text x="55" y="762">Berry smoothie</text>
+      <text x="55" y="819">Green smoothie</text>
+      <text x="55" y="876">Latte</text>
+      <text x="55" y="933">Cappuccino</text>
+      <text x="55" y="990">Pistachio latte</text>
+    </g>
+    <text x="55" y="1083" font-size="22">Selections may change.</text>
+    <text x="55" y="1118" font-size="22">See Square for today’s menu and prices.</text>
+  </g>
+  <g stroke="#1b360b" stroke-width="2">
+    <path d="M55 212H665"/>
+    <path d="M55 598H665"/>
+    <path d="M55 1030H665"/>
+  </g>
+</svg>

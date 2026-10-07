@@ -9,9 +9,6 @@
   }
 
   const html = document.documentElement;
-  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-  const mobile = matchMedia('(max-width: 900px)');
-
   document.querySelectorAll('[data-year]').forEach((element) => { element.textContent = String(new Date().getFullYear()); });
 
   // Motion preference: a per-visitor convenience, so browser storage is fine.
@@ -30,18 +27,29 @@
     try { localStorage.setItem('wildsun:motion', paused ? 'paused' : 'playing'); } catch (_) { /* Not remembered; still applied. */ }
   }));
 
-  // Header: transparent over the hero, solid once the page scrolls.
-  const header = document.querySelector('[data-header]');
-  const hero = document.querySelector('[data-hero]');
-  const dock = document.getElementById('mobile-dock');
+  // Show the events invitation once per browser session, on whichever page
+  // someone visits first. Native dialog handles Escape and focus trapping.
+  const occasionDialog = document.getElementById('occasion-dialog');
+  if (occasionDialog && typeof occasionDialog.showModal === 'function') {
+    occasionDialog.querySelectorAll('[data-dialog-close]').forEach((button) => {
+      button.addEventListener('click', () => occasionDialog.close());
+    });
+    occasionDialog.addEventListener('click', (event) => {
+      if (event.target === occasionDialog) occasionDialog.close();
+    });
+    let seen = false;
+    try { seen = sessionStorage.getItem('wildsun:events-invitation') === 'seen'; } catch (_) { /* Storage may be unavailable. */ }
+    if (!seen) {
+      setTimeout(() => {
+        if (occasionDialog.open) return;
+        occasionDialog.showModal();
+        try { sessionStorage.setItem('wildsun:events-invitation', 'seen'); } catch (_) { /* The invitation still works. */ }
+      }, 1400);
+    }
+  }
+
   const menuButton = document.querySelector('.menu-toggle');
   const menu = document.getElementById('primary-nav');
-  let pastHero = false;
-
-  function updateDock() {
-    const show = mobile.matches && pastHero && !document.body.classList.contains('page-book') && !html.classList.contains('menu-open');
-    dock?.classList.toggle('is-visible', show);
-  }
 
   function setMenu(open, { restoreFocus = true } = {}) {
     if (!menuButton || !menu) return;
@@ -52,7 +60,6 @@
     document.querySelectorAll('main, .site-footer').forEach((element) => { element.inert = open; });
     if (open) menu.querySelector('a')?.focus({ preventScroll: true });
     else if (restoreFocus) menuButton.focus({ preventScroll: true });
-    updateDock();
   }
 
   menuButton?.addEventListener('click', () => setMenu(menuButton.getAttribute('aria-expanded') !== 'true'));
@@ -67,69 +74,16 @@
       else if (!event.shiftKey && index === focusable.length - 1) { event.preventDefault(); focusable[0].focus(); }
     }
   });
-  mobile.addEventListener?.('change', () => { if (!mobile.matches && html.classList.contains('menu-open')) setMenu(false, { restoreFocus: false }); updateDock(); });
+  matchMedia('(max-width: 900px)').addEventListener?.('change', (event) => {
+    if (!event.matches && html.classList.contains('menu-open')) setMenu(false, { restoreFocus: false });
+  });
 
-  let ticking = false;
-  const parallax = [...document.querySelectorAll('[data-parallax]')];
-  function onScroll() {
-    ticking = false;
-    const y = window.scrollY;
-    header?.classList.toggle('is-scrolled', y > 12);
-    // Parallax only matters while the hero is on screen.
-    if (!reducedMotion.matches && !html.classList.contains('motion-paused') && y < window.innerHeight * 1.2) {
-      parallax.forEach((element) => {
-        const offset = Math.min(y, window.innerHeight) * -0.08;
-        element.style.setProperty('--parallax', offset.toFixed(1) + 'px');
-      });
-    }
-  }
-  window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
-  onScroll();
-
-  if ('IntersectionObserver' in window && hero) {
-    new IntersectionObserver(([entry]) => { pastHero = !entry.isIntersecting && entry.boundingClientRect.bottom < 0; updateDock(); }).observe(hero);
-  }
-
-  // Pause looping animations (sun, ribbons, photo zooms) while their section is
-  // off-screen, so scrolling stays smooth and phones save battery.
+  // Pause the review ribbon while it is off-screen to save battery.
   if ('IntersectionObserver' in window) {
     const offscreen = new IntersectionObserver((entries) => {
       entries.forEach((entry) => entry.target.classList.toggle('is-offscreen', !entry.isIntersecting));
     }, { rootMargin: '120px 0px' });
     document.querySelectorAll('[data-hero], .ribbons, .story-teaser, .book-cta').forEach((element) => offscreen.observe(element));
-  }
-
-  // Reveal on scroll. Content is visible by default; this only adds polish.
-  const reveals = document.querySelectorAll('[data-reveal]');
-  if ('IntersectionObserver' in window && !reducedMotion.matches) {
-    html.classList.add('reveal-ready');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-revealed');
-        observer.unobserve(entry.target);
-      });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
-    reveals.forEach((element) => {
-      // Stagger siblings in the same grid.
-      const siblings = element.parentElement ? [...element.parentElement.children].filter((child) => child.hasAttribute('data-reveal')) : [];
-      element.style.setProperty('--reveal-delay', (Math.max(siblings.indexOf(element), 0) * 90) + 'ms');
-      observer.observe(element);
-    });
-  }
-
-  // Pointer tilt on favourite cards, for fine pointers only.
-  if (matchMedia('(hover: hover) and (pointer: fine)').matches && !reducedMotion.matches) {
-    document.querySelectorAll('.fav-card a').forEach((card) => {
-      card.addEventListener('pointermove', (event) => {
-        const box = card.getBoundingClientRect();
-        const x = (event.clientX - box.left) / box.width - 0.5;
-        const y = (event.clientY - box.top) / box.height - 0.5;
-        card.style.setProperty('--tilt-x', (y * -6).toFixed(2) + 'deg');
-        card.style.setProperty('--tilt-y', (x * 8).toFixed(2) + 'deg');
-      });
-      card.addEventListener('pointerleave', () => { card.style.removeProperty('--tilt-x'); card.style.removeProperty('--tilt-y'); });
-    });
   }
 
   html.classList.add('is-ready');

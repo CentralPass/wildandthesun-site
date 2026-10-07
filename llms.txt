@@ -18,60 +18,9 @@
 - Instagram: https://www.instagram.com/wild_and_the_sun_acai_cafe/
 - Facebook: https://www.facebook.com/p/Wild-and-the-Sun-Acai-Cafe-61572911067431/
 
-## Menu highlights
+## Menu
 
-Current items and prices are on the online ordering store. Highlights:
-
-### Açaí
-
-Açaí is a deep-purple berry from the Amazon. We serve it soft and creamy, topped with fresh fruit, granola, nut butters and drizzles.
-
-- Classic Açaí Bowl: Açaí with banana, strawberry, granola and honey.
-- Small Açaí: A smaller serve of our creamy açaí.
-- Kids Açaí Bowl: Banana, granola, strawberry and agave.
-- Açaí add-on: Add açaí to a smoothie or chia pudding.
-
-### Coffee, lattes and tea
-
-Espresso coffee made to order, plus our specialty lattes, hot and iced.
-
-- Espresso coffee: Flat white, latte, cappuccino, long black, macchiato and espresso.
-- Pistachio Latte: A creamy pistachio latte, one of our most popular drinks.
-- Cookie Butter Latte: A latte made with cookie butter.
-- Spiced Matcha Latte: A matcha latte with spice.
-- Iced Strawberry Latte: Iced latte with strawberry.
-- Pistachio Affogato: Pistachio and espresso, affogato style.
-- Iced coffee, mocha, chai, turmeric latte and hot chocolate: Café favourites, plus a babyccino for little ones.
-- Tea: English breakfast, green tea and iced peach tea cold brew.
-
-### Pastries and sweets
-
-Croissants, cakes and treats from the counter.
-
-- Dubai Chocolate Croissant: A croissant with Dubai chocolate.
-- Pistachio Croissant: A croissant with pistachio.
-- Dubai Chocolate: Mini Dubai chocolates or a whole Dubai choc block.
-- Loaded Banana Bread: Fresh banana, peanut butter, chia and hemp seeds, and Nutella choc chips.
-- Waffles: Served with ice cream, strawberries and powdered sugar.
-- Cheesecake and Pistachio Cheesecake: By the slice.
-- Gluten-Free Brownie: Served with Nutella cream and fresh strawberries.
-- Banana bread, orange loaf, brownies and cookies: Choc chip and oatmeal cookies for a quick treat.
-
-### Savoury
-
-Something warm and filling for lunch.
-
-- Quesadilla: Veggie, chicken or beef.
-- Spinach, Ham and Cheese Croissant: A croissant with spinach, ham and cheese.
-- Gourmet Ham and Cheese Roll: A ham and cheese roll.
-
-### Smoothies and cold drinks
-
-Smoothies, milkshakes and grab-and-go drinks.
-
-- Smoothies: Berry, mango and green smoothies, with protein or açaí to add.
-- Milkshakes: Classic milkshakes.
-- Fridge drinks: Grab-and-go cold drinks.
+The full website menu is coming soon. Current items and prices are on the online ordering store: https://wild-and-the-sun.square.site/s/order#most-popular
 
 ## Frequently asked questions
 
@@ -110,7 +59,7 @@ There’s a Kids Açaí Bowl and babyccinos for little ones, a veggie quesadilla
 ## Pages
 
 - [Home](https://wild-and-the-sun.pages.dev/): Açaí, specialty coffee, café food, birthdays, catering and special occasions at Aberfoyle Hub. Visit, book a table or plan an event.
-- [Menu](https://wild-and-the-sun.pages.dev/menu/): Our café menu in Aberfoyle Park: classic and kids açaí bowls, pistachio and matcha lattes, Dubai chocolate croissants, waffles, quesadillas and smoothies.
+- [Menu](https://wild-and-the-sun.pages.dev/menu/): Explore café food and drinks at Wild and The Sun in Aberfoyle Park. Find current items and prices in our Square store.
 - [Visit us](https://wild-and-the-sun.pages.dev/visit/): Plan birthdays, catering, group tables and special occasions at Wild and The Sun, or find opening hours and directions to our Aberfoyle Park café.
 - [Book a table](https://wild-and-the-sun.pages.dev/book/): Book a table at Wild and The Sun at Aberfoyle Hub, Aberfoyle Park. Message the café to arrange your visit.
 - [Privacy](https://wild-and-the-sun.pages.dev/privacy/): How Wild and The Sun handles your personal information when you visit the website, book a table, pay a deposit or order online.
